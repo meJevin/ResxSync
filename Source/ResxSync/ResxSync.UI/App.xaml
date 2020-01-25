@@ -5,7 +5,7 @@
              xmlns:Util="clr-namespace:ResxSync.UI.Util">
     <Application.Resources>
 
-        <ResourceDictionary >
+        <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
@@ -13,9 +13,14 @@
 
                     </Util:Bootstrapper>
                 </ResourceDictionary>
-                
-                <ResourceDictionary Source="Styles\Main.xaml">
-                </ResourceDictionary>
+
+                <ResourceDictionary Source="Styles\Main.xaml"/>
+
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>

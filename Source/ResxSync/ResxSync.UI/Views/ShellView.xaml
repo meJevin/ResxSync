@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:ResxSync.UI.Views"
         mc:Ignorable="d"
         
+        xmlns:Material="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
         Title="ResxSync" Height="450" Width="800"
         WindowStyle="None" AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip"
@@ -14,38 +16,47 @@
         
         <!-- Title bar
         -->
-        <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" Background="WhiteSmoke" Height="24"
+        <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" Background="{StaticResource Default}" Height="24"
                    MouseLeftButtonDown="TitleBar_MouseDown">
-            <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Margin="5 0">
-                Resx.Sync
+            <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Margin="5 0"
+                       Foreground="White">
+                Title
             </TextBlock>
+
+
+            <!-- Menu
+            -->
+            <Menu DockPanel.Dock="Left" Background="{StaticResource Default}" Foreground="White">
+                <MenuItem Header="File" Height="24" FontFamily="Roboto Light" FontSize="13"/>
+            </Menu>
             
             <!-- Minimize, fullscreen, close
             -->
             <StackPanel DockPanel.Dock="Right" VerticalAlignment="Stretch" HorizontalAlignment="Right"
                         Orientation="Horizontal">
-                <Button Style="{StaticResource TitleBarButton}" Foreground="Black">
-                    <Label Content="min" 
-                           FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Button Height="24" 
+                        BorderThickness="0"
+                        Background="{StaticResource Default}"
+                        Material:ShadowAssist.ShadowDepth="Depth0"
+                        Material:ButtonAssist.CornerRadius="0">
+                    <Material:PackIcon Kind="WindowMinimize"/>
                 </Button>
-                <Button Style="{StaticResource TitleBarButton}">
-                    <Label Content="ful" 
-                           FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Button Height="24" 
+                        BorderThickness="0"
+                        Background="{StaticResource Default}"
+                        Material:ShadowAssist.ShadowDepth="Depth0"
+                        Material:ButtonAssist.CornerRadius="0">
+                    <Material:PackIcon Kind="WindowMaximize"/>
                 </Button>
-                <Button Style="{StaticResource TitleBarButton}">
-                    <Label Content="cls" 
-                           FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Button Height="24" 
+                        BorderThickness="0"
+                        Background="{StaticResource Default}"
+                        Material:ShadowAssist.ShadowDepth="Depth0"
+                        Material:ButtonAssist.CornerRadius="0">
+                    <Material:PackIcon Kind="WindowClose"/>
                 </Button>
             </StackPanel>
         </DockPanel>
-
-        <!-- Menu
-        -->
-        <Menu DockPanel.Dock="Top" Background="#eee">
-            <MenuItem Header="File">
-
-            </MenuItem>
-        </Menu>
 
         <!-- Client area
         -->
@@ -55,7 +66,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Grid Background="#eee">
+            <Grid Background="{StaticResource Dark}">
                 
             </Grid>
 
