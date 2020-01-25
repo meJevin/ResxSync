@@ -24,7 +24,7 @@
             -->
             <StackPanel DockPanel.Dock="Right" VerticalAlignment="Stretch" HorizontalAlignment="Right"
                         Orientation="Horizontal">
-                <Grid Width="30">
+                <Grid Width="30" Style="{StaticResource TitleBarButton}">
                     <Label Content="min" 
                            FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>

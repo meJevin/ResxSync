@@ -5,7 +5,7 @@
              xmlns:Util="clr-namespace:ResxSync.UI.Util">
     <Application.Resources>
 
-        <ResourceDictionary>
+        <ResourceDictionary >
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
@@ -13,9 +13,12 @@
 
                     </Util:Bootstrapper>
                 </ResourceDictionary>
+                
+                <ResourceDictionary Source="Styles\Main.xaml">
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
-
+        
     </Application.Resources>
 </Application>
