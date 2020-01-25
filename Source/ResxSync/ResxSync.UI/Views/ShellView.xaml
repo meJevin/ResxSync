@@ -38,21 +38,24 @@
                         BorderThickness="0"
                         Background="{StaticResource Default}"
                         Material:ShadowAssist.ShadowDepth="Depth0"
-                        Material:ButtonAssist.CornerRadius="0">
+                        Material:ButtonAssist.CornerRadius="0"
+                        Click="MinimizedClick">
                     <Material:PackIcon Kind="WindowMinimize"/>
                 </Button>
                 <Button Height="24" 
                         BorderThickness="0"
                         Background="{StaticResource Default}"
                         Material:ShadowAssist.ShadowDepth="Depth0"
-                        Material:ButtonAssist.CornerRadius="0">
+                        Material:ButtonAssist.CornerRadius="0"
+                        Click="MaximizeClick">
                     <Material:PackIcon Kind="WindowMaximize"/>
                 </Button>
                 <Button Height="24" 
                         BorderThickness="0"
                         Background="{StaticResource Default}"
                         Material:ShadowAssist.ShadowDepth="Depth0"
-                        Material:ButtonAssist.CornerRadius="0">
+                        Material:ButtonAssist.CornerRadius="0"
+                        Click="CloseClick">
                     <Material:PackIcon Kind="WindowClose"/>
                 </Button>
             </StackPanel>
