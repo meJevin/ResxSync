@@ -21,5 +21,10 @@ namespace ResxSync.UI.Views
         {
             InitializeComponent();
         }
+
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

@@ -5,14 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ResxSync.UI.Views"
         mc:Ignorable="d"
-        Title="ResxSync" Height="450" Width="800">
+        
+        Title="ResxSync" Height="450" Width="800"
+        WindowStyle="None" AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        >
     <DockPanel>
+        
+        <!-- Title bar
+        -->
+        <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" Background="WhiteSmoke" Height="24"
+                   MouseLeftButtonDown="TitleBar_MouseDown">
+            <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Margin="5 0">
+                Resx.Sync
+            </TextBlock>
+            
+            <!-- Minimize, fullscreen, close
+            -->
+            <StackPanel DockPanel.Dock="Right" VerticalAlignment="Stretch" HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <Grid Width="30">
+                    <Label Content="min" 
+                           FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Width="30">
+                    <Label Content="ful" 
+                           FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Width="30">
+                    <Label Content="cls" 
+                           FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+        </DockPanel>
+
+        <!-- Menu
+        -->
         <Menu DockPanel.Dock="Top" Background="#eee">
             <MenuItem Header="File">
 
             </MenuItem>
         </Menu>
 
+        <!-- Client area
+        -->
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150" MinWidth="100"/>
