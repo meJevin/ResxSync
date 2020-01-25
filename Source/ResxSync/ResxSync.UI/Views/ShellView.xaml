@@ -24,18 +24,18 @@
             -->
             <StackPanel DockPanel.Dock="Right" VerticalAlignment="Stretch" HorizontalAlignment="Right"
                         Orientation="Horizontal">
-                <Grid Width="30" Style="{StaticResource TitleBarButton}">
+                <Button Style="{StaticResource TitleBarButton}" Foreground="Black">
                     <Label Content="min" 
-                           FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid Width="30">
+                           FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+                <Button Style="{StaticResource TitleBarButton}">
                     <Label Content="ful" 
-                           FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid Width="30">
+                           FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+                <Button Style="{StaticResource TitleBarButton}">
                     <Label Content="cls" 
-                           FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </Grid>
+                           FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
             </StackPanel>
         </DockPanel>
 
