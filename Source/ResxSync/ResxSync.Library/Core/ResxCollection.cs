@@ -9,29 +9,6 @@ using System.IO;
 
 namespace ResxSync.Library.Core
 {
-    public class ResxFile
-    {
-        public static ResxFile Load(string path)
-        {
-            return null;
-        }
-
-        public string Name
-        {
-            get;
-        }
-
-        public Dictionary<string, string> KVPs
-        {
-            get;
-        }
-    }
-
-    public class ResxKeyCollection
-    {
-
-    }
-
     public class ResxCollection
     {
         // Loaded .resx files and their KVPs
