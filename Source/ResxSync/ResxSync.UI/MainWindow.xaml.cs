@@ -60,9 +60,9 @@ namespace ResxSync.UI
         {
             AllKeys.Items.Clear();
 
-            AllKeys.Items.Add(String.Join("\t", col._resxFiles.Keys));
+            AllKeys.Items.Add(String.Join("\t", col.ResxFiles.Keys));
 
-            foreach (var key in col._keysAndTheirValues)
+            foreach (var key in col.KeyValues)
             {
                 string lbResult = key.Key;
 
@@ -75,7 +75,7 @@ namespace ResxSync.UI
 
             LoadedFiles.Items.Clear();
 
-            foreach (var fileName in col._resxFiles.Keys)
+            foreach (var fileName in col.ResxFiles.Keys)
             {
                 LoadedFiles.Items.Add(fileName);
             }
@@ -87,7 +87,7 @@ namespace ResxSync.UI
 
             UnsyncedKeys.Items.Clear();
 
-            UnsyncedKeys.Items.Add(String.Join("\t", col._resxFiles.Keys));
+            UnsyncedKeys.Items.Add(String.Join("\t", col.ResxFiles.Keys));
             foreach (var key in unsynced)
             {
                 string lbResult = key.Key;

@@ -29,13 +29,13 @@
             </ScrollViewer>
         </DockPanel>
 
-        <ScrollViewer Grid.Column="1">
+        <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Visible">
             <ListBox x:Name="AllKeys">
 
             </ListBox>
         </ScrollViewer>
-        
-        <ScrollViewer Grid.Column="2">
+
+        <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Visible">
             <ListBox x:Name="UnsyncedKeys">
 
             </ListBox>
