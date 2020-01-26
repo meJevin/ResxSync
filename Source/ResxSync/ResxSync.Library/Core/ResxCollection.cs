@@ -97,6 +97,24 @@ namespace ResxSync.Library.Core
             _resxFiles.Add(resxName, keyValuePairs);
         }
 
+        public void Remove(string resxName)
+        {
+            var resxToRemove = _resxFiles[resxName];
+
+            var allKeys = _keysAndTheirValues.Keys.ToList();
+            foreach (var key in allKeys)
+            {
+                _keysAndTheirValues[key].Remove(resxName);
+
+                if (_keysAndTheirValues[key].Count == 0 || _keysAndTheirValues[key].Values.All(val => val == null))
+                {
+                    _keysAndTheirValues.Remove(key);
+                }
+            }
+
+            _resxFiles.Remove(resxName);
+        }
+
         public Dictionary<string, Dictionary<string, string>> GetUnsynced()
         {
             Dictionary<string, Dictionary<string, string>> result = new Dictionary<string, Dictionary<string, string>>();

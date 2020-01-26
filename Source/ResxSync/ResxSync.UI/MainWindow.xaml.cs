@@ -42,6 +42,22 @@ namespace ResxSync.UI
 
             col.Add(ofd.FileName);
 
+            DrawAllKeys();
+            DrawUnsyncedKeys();
+        }
+
+        private void RemoveFileButtonClick(object sender, RoutedEventArgs e)
+        {
+            string selectedFileName = LoadedFiles.SelectedItem as string;
+
+            col.Remove(selectedFileName);
+
+            DrawAllKeys();
+            DrawUnsyncedKeys();
+        }
+
+        private void DrawAllKeys()
+        {
             AllKeys.Items.Clear();
 
             AllKeys.Items.Add(String.Join("\t", col._resxFiles.Keys));
@@ -56,9 +72,16 @@ namespace ResxSync.UI
                 }
                 AllKeys.Items.Add(lbResult);
             }
+
+            LoadedFiles.Items.Clear();
+
+            foreach (var fileName in col._resxFiles.Keys)
+            {
+                LoadedFiles.Items.Add(fileName);
+            }
         }
 
-        private void GetUnsyncedButtonClick(object sender, RoutedEventArgs e)
+        private void DrawUnsyncedKeys()
         {
             var unsynced = col.GetUnsynced();
 

@@ -12,17 +12,22 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
-        <StackPanel VerticalAlignment="Center">
+
+        <DockPanel VerticalAlignment="Stretch">
             <Button Width="100" Height="24"
-                Click="AddFileButtonClick">
+                Click="AddFileButtonClick" DockPanel.Dock="Top">
                 Add file
             </Button>
             <Button Width="100" Height="24"
-                Click="GetUnsyncedButtonClick">
-                Get Unsynced
+                Click="RemoveFileButtonClick" DockPanel.Dock="Bottom">
+                Remove File
             </Button>
-        </StackPanel>
+            <ScrollViewer DockPanel.Dock="Top" Margin="5">
+                <ListBox x:Name="LoadedFiles">
+
+                </ListBox>
+            </ScrollViewer>
+        </DockPanel>
 
         <ScrollViewer Grid.Column="1">
             <ListBox x:Name="AllKeys">
