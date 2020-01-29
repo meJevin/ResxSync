@@ -4,41 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ResxSync.UI"
+        xmlns:controls="clr-namespace:ResxSync.UI.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="125"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        Title="MainWindow" Height="445" Width="666">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File"/>
+            <MenuItem Header="Edit"/>
+            <MenuItem Header="View"/>
+        </Menu>
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <DockPanel VerticalAlignment="Stretch">
-            <Button Width="100" Height="24"
-                Click="AddFileButtonClick" DockPanel.Dock="Top">
-                Add file
-            </Button>
-            <Button Width="100" Height="24"
-                Click="RemoveFileButtonClick" DockPanel.Dock="Bottom">
-                Remove File
-            </Button>
-            <ScrollViewer DockPanel.Dock="Top" Margin="5">
-                <ListBox x:Name="LoadedFiles">
+            <Grid>
+                <ListView x:Name="WorkspacesLV"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto">
 
-                </ListBox>
-            </ScrollViewer>
-        </DockPanel>
+                </ListView>
+            </Grid>
 
-        <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Visible">
-            <ListBox x:Name="AllKeys">
+            <Grid Grid.Column="1">
+                <controls:WorkspaceControl x:Name="CurrentWorkspace"/>
+            </Grid>
 
-            </ListBox>
-        </ScrollViewer>
-
-        <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Visible">
-            <ListBox x:Name="UnsyncedKeys">
-
-            </ListBox>
-        </ScrollViewer>
-    </Grid>
+            <GridSplitter Grid.Column ="0" Background="Transparent" Width="5"
+                HorizontalAlignment="Right" VerticalAlignment="Stretch"/>
+        </Grid>
+    </DockPanel>
 </Window>

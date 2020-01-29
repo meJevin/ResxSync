@@ -1,7 +1,4 @@
-﻿using Microsoft.Win32;
-using ResxSync.Library.Core;
-using ResxSync.UI.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,16 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ResxSync.UI
+namespace ResxSync.UI.Controls
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for WorkspaceControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WorkspaceControl : UserControl
     {
-        public MainWindow()
+        public WorkspaceControl()
         {
             InitializeComponent();
+        }
+
+        public void Init()
+        {
+
         }
     }
 }
