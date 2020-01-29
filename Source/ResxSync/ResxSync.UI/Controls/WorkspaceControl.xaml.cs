@@ -22,6 +22,7 @@ namespace ResxSync.UI.Controls
     public partial class WorkspaceControl : UserControl
     {
         ResxSyncer syncer = new ResxSyncer();
+        ResxControl focusedResx = null;
 
         public WorkspaceControl()
         {
@@ -36,14 +37,53 @@ namespace ResxSync.UI.Controls
             syncer.Add(loadedResx);
 
             ResxControl resxControl = new ResxControl();
-            resxControl.FillFrom(loadedResx);
+            resxControl.Init(loadedResx, syncer);
             resxControl.Width = 250;
+
+            resxControl.PreviewMouseDown += ResxControl_PreviewMouseDown;
+
+            resxControl.ContextMenu = new ContextMenu();
+            var deleteMI = new MenuItem() { Header = "Delete" };
+            deleteMI.Click += DeleteMI_Click;
+            resxControl.ContextMenu.Items.Add(deleteMI);
+            resxControl.ContextMenuOpening += ResxControl_ContextMenuOpening;
+
             LoadedResxFilesSP.Children.Add(resxControl);
+
+            foreach (ResxControl resx in LoadedResxFilesSP.Children)
+            {
+                resx.Init(resx.AssociatedResx, syncer);
+            }
         }
 
-        private void RemoveResx(object sender, RoutedEventArgs e)
+        private void ResxControl_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
+            focusedResx = (sender as ResxControl);
+        }
 
+        private void DeleteMI_Click(object sender, RoutedEventArgs e)
+        {
+            var resxToDelete = focusedResx.AssociatedResx;
+
+            syncer.Remove(resxToDelete);
+
+            LoadedResxFilesSP.Children.Remove(focusedResx);
+        }
+
+        private void ResxControl_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            foreach (ResxControl rx in LoadedResxFilesSP.Children)
+            {
+                if (rx == (sender as ResxControl))
+                {
+                    focusedResx = rx;
+                    rx.Select();
+                }
+                else
+                {
+                    rx.Deselect();
+                }
+            }
         }
     }
 }

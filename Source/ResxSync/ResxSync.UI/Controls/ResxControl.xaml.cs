@@ -21,19 +21,62 @@ namespace ResxSync.UI.Controls
     /// </summary>
     public partial class ResxControl : UserControl
     {
+        public Resx AssociatedResx;
+
         public ResxControl()
         {
             InitializeComponent();
         }
 
-        public void FillFrom(Resx resx)
+        public void Init(Resx resx, ResxSyncer syncer)
         {
+            AssociatedResx = resx;
+
             ValuesSP.Children.Clear();
 
-            foreach (var v in resx.KVPs.Values)
+            foreach (var syncKey in syncer.SyncKeys)
             {
-                ValuesSP.Children.Add(new TextBox() { Text = v });
+                StackPanel kvpSP = new StackPanel() { Orientation = Orientation.Horizontal };
+                kvpSP.Children.Add(new Label() { Content = syncKey.Key });
+
+                TextBox valueTB = new TextBox();
+                
+                if (syncKey.Value.Owners.Contains(resx))
+                {
+                    valueTB.Text = resx.KVPs[syncKey.Key];
+                }
+
+                valueTB.TextChanged += (object sender, TextChangedEventArgs e) =>
+                {
+                    resx.KVPs[syncKey.Key] = valueTB.Text;
+                };
+
+                kvpSP.Children.Add(valueTB);
+
+                ValuesSP.Children.Add(kvpSP);
             }
+        }
+
+        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            HighlightB.BorderBrush = new SolidColorBrush(Colors.Aqua);
+            HighlightB.BorderThickness = new Thickness(2);
+        }
+
+        private void UserControl_MouseLeave(object sender, MouseEventArgs e)
+        {
+            HighlightB.BorderThickness = new Thickness(0);
+        }
+
+        public void Select()
+        {
+            SelectionB.BorderBrush = new SolidColorBrush(Colors.Aquamarine);
+            SelectionB.BorderThickness = new Thickness(2);
+        }
+
+        public void Deselect()
+        {
+            SelectionB.BorderThickness = new Thickness(0);
         }
     }
 }

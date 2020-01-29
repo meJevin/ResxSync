@@ -8,22 +8,20 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Gray">
     <Grid>
+
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Add" Click="AddResx"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
-        <Grid Grid.ColumnSpan="2">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <Button Content="ADD" Click="AddResx"/>
-                <Button Content="REMOVE" Click="RemoveResx"/>
-                <Button Content="UNSYNCHED FIRST"/>
-            </StackPanel>
-        </Grid>
         
         <ScrollViewer HorizontalScrollBarVisibility="Visible" Grid.Row="1">
             <Grid>
