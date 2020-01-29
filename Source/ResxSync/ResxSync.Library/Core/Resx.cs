@@ -34,25 +34,29 @@ namespace ResxSync.Library.Core
     public class ResxSyncer
     {
         // Loaded from actual files
-        List<Resx> _resxFiles;
-
-        // Copy from above with extra KVPs that are missing
-        List<Resx> _resxFilesSynced;
+        public List<Resx> LoadedResx;
 
         public ResxSyncer()
         {
-            _resxFiles = new List<Resx>();
-            _resxFilesSynced = new List<Resx>();
+            LoadedResx = new List<Resx>();
         }
 
         public void Add(Resx rFile)
         {
-            _resxFiles.Add(rFile);
-
-            Resx synced = new Resx();
+            LoadedResx.Add(rFile);
         }
 
         public void Remove(Resx rFile)
+        {
+            LoadedResx.Remove(rFile);
+        }
+
+        public void AllKeys()
+        {
+            LoadedResx.Select(resx => resx.KVPs.Keys).Distinct();
+        }
+
+        public void MissingValues(Resx file)
         {
 
         }
