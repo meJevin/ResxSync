@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResxSync.Library.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,16 @@ namespace ResxSync.UI.Controls
         public ResxControl()
         {
             InitializeComponent();
+        }
+
+        public void FillFrom(Resx resx)
+        {
+            ValuesSP.Children.Clear();
+
+            foreach (var v in resx.KVPs.Values)
+            {
+                ValuesSP.Children.Add(new Label() { Content = v });
+            }
         }
     }
 }

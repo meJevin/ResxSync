@@ -13,18 +13,28 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <Label Content="ADD"/>
-                <Label Content="REMOVE"/>
-                <Label Content="UNSYNCHED FIRST"/>
+                <Button Content="ADD" Click="AddResx"/>
+                <Button Content="REMOVE"/>
+                <Button Content="UNSYNCHED FIRST"/>
             </StackPanel>
         </Grid>
         
         <ScrollViewer HorizontalScrollBarVisibility="Visible" Grid.Row="1">
-            <StackPanel x:Name="LoadedResxFilesSP" Orientation="Horizontal">
+            <Grid>
+                <ListView x:Name="LoadedResxLV" Width="150" HorizontalAlignment="Left" Background="Transparent">
+                    
+                </ListView>
                 
-            </StackPanel>
+                <StackPanel x:Name="LoadedResxFilesSP" Orientation="Horizontal">
+
+                </StackPanel>
+            </Grid>
         </ScrollViewer>
     </Grid>
 </UserControl>

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResxSync.Library", "ResxSyn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResxSync.UI", "ResxSync.UI\ResxSync.UI.csproj", "{6831DD56-6575-4757-986A-919690DBF4CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResxSync.Library.Tests", "ResxSync.Library.Tests\ResxSync.Library.Tests.csproj", "{7AFFF6A3-40E0-4014-8AFE-D0FDFB7AEDA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6831DD56-6575-4757-986A-919690DBF4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6831DD56-6575-4757-986A-919690DBF4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6831DD56-6575-4757-986A-919690DBF4CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AFFF6A3-40E0-4014-8AFE-D0FDFB7AEDA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AFFF6A3-40E0-4014-8AFE-D0FDFB7AEDA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AFFF6A3-40E0-4014-8AFE-D0FDFB7AEDA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AFFF6A3-40E0-4014-8AFE-D0FDFB7AEDA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

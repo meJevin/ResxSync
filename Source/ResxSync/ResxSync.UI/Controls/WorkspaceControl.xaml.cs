@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResxSync.Library.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,23 @@ namespace ResxSync.UI.Controls
     /// </summary>
     public partial class WorkspaceControl : UserControl
     {
+        ResxSyncer syncer = new ResxSyncer();
+
         public WorkspaceControl()
         {
             InitializeComponent();
         }
 
-        public void Init()
+        private void AddResx(object sender, RoutedEventArgs e)
         {
+            var path = Utils.SelectFile();
 
+            Resx loadedResx = new Resx(path);
+            syncer.Add(loadedResx);
+
+            ResxControl resxControl = new ResxControl();
+            resxControl.FillFrom(loadedResx);
+            LoadedResxFilesSP.Children.Add(resxControl);
         }
     }
 }
