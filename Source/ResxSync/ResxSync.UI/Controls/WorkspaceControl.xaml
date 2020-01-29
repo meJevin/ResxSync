@@ -20,20 +20,29 @@
         <Grid Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <Button Content="ADD" Click="AddResx"/>
-                <Button Content="REMOVE"/>
+                <Button Content="REMOVE" Click="RemoveResx"/>
                 <Button Content="UNSYNCHED FIRST"/>
             </StackPanel>
         </Grid>
         
         <ScrollViewer HorizontalScrollBarVisibility="Visible" Grid.Row="1">
             <Grid>
-                <ListView x:Name="LoadedResxLV" Width="150" HorizontalAlignment="Left" Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <ListView x:Name="LoadedResxKeysLV" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          ScrollViewer.CanContentScroll="True">
                     
                 </ListView>
                 
-                <StackPanel x:Name="LoadedResxFilesSP" Orientation="Horizontal">
+                <StackPanel x:Name="LoadedResxFilesSP" Orientation="Horizontal" Grid.Column="1">
 
                 </StackPanel>
+                
+                <GridSplitter Grid.Column ="0" Background="DarkBlue" Width="5"
+                HorizontalAlignment="Right" VerticalAlignment="Stretch"/>
             </Grid>
         </ScrollViewer>
     </Grid>

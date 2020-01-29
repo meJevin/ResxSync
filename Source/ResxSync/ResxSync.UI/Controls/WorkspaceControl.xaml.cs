@@ -38,6 +38,18 @@ namespace ResxSync.UI.Controls
             ResxControl resxControl = new ResxControl();
             resxControl.FillFrom(loadedResx);
             LoadedResxFilesSP.Children.Add(resxControl);
+
+            LoadedResxKeysLV.Items.Clear();
+
+            foreach (var syncKey in syncer.SyncKeys)
+            {
+                LoadedResxKeysLV.Items.Add(syncKey.Key);
+            }
+        }
+
+        private void RemoveResx(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
