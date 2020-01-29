@@ -7,6 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="560.625" d:DesignWidth="428.75"
              Background="White">
-    <StackPanel x:Name="ValuesSP">
-    </StackPanel>
+    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+        <StackPanel x:Name="ValuesSP">
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

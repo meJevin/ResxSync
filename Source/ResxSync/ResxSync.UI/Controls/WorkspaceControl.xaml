@@ -29,20 +29,11 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                
-                <ListView x:Name="LoadedResxKeysLV" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                          ScrollViewer.CanContentScroll="True">
-                    
-                </ListView>
                 
                 <StackPanel x:Name="LoadedResxFilesSP" Orientation="Horizontal" Grid.Column="1">
 
                 </StackPanel>
-                
-                <GridSplitter Grid.Column ="0" Background="DarkBlue" Width="5"
-                HorizontalAlignment="Right" VerticalAlignment="Stretch"/>
             </Grid>
         </ScrollViewer>
     </Grid>

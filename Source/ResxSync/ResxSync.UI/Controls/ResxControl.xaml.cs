@@ -32,7 +32,7 @@ namespace ResxSync.UI.Controls
 
             foreach (var v in resx.KVPs.Values)
             {
-                ValuesSP.Children.Add(new Label() { Content = v });
+                ValuesSP.Children.Add(new TextBox() { Text = v });
             }
         }
     }
