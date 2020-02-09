@@ -52,7 +52,7 @@ namespace ResxSync.UI.Controls
 
             foreach (ResxControl resx in LoadedResxFilesSP.Children)
             {
-                resx.Init(resx.AssociatedResx, syncer);
+                resx.Init(resx._resx, syncer);
             }
         }
 
@@ -63,11 +63,16 @@ namespace ResxSync.UI.Controls
 
         private void DeleteMI_Click(object sender, RoutedEventArgs e)
         {
-            var resxToDelete = focusedResx.AssociatedResx;
+            var resxToDelete = focusedResx._resx;
 
             syncer.Remove(resxToDelete);
 
             LoadedResxFilesSP.Children.Remove(focusedResx);
+
+            foreach (ResxControl resx in LoadedResxFilesSP.Children)
+            {
+                resx.Init(resx._resx, syncer);
+            }
         }
 
         private void ResxControl_PreviewMouseDown(object sender, MouseButtonEventArgs e)

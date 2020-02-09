@@ -21,7 +21,7 @@ namespace ResxSync.UI.Controls
     /// </summary>
     public partial class ResxControl : UserControl
     {
-        public Resx AssociatedResx;
+        public Resx _resx;
 
         public ResxControl()
         {
@@ -30,31 +30,60 @@ namespace ResxSync.UI.Controls
 
         public void Init(Resx resx, ResxSyncer syncer)
         {
-            AssociatedResx = resx;
+            _resx = resx;
 
             ValuesSP.Children.Clear();
 
             foreach (var syncKey in syncer.SyncKeys)
             {
-                StackPanel kvpSP = new StackPanel() { Orientation = Orientation.Horizontal };
-                kvpSP.Children.Add(new Label() { Content = syncKey.Key });
+                AddSyncKey(syncKey);
+            }
+        }
 
-                TextBox valueTB = new TextBox();
-                
-                if (syncKey.Value.Owners.Contains(resx))
+        private void AddSyncKey(SyncKey syncKey)
+        {
+            TextBox ValueTB = new TextBox()
+            {
+                HorizontalContentAlignment = HorizontalAlignment.Center,
+                VerticalContentAlignment = VerticalAlignment.Center,
+                Text = _resx.KVPs.ContainsKey(syncKey.Key) ? _resx.KVPs[syncKey.Key] : "",
+            };
+
+            TextBox KeyTB = new TextBox()
+            {
+                HorizontalContentAlignment = HorizontalAlignment.Center,
+                VerticalContentAlignment = VerticalAlignment.Center,
+                Text = syncKey.Key,
+                IsReadOnly = true,
+            };
+
+            ValueTB.TextChanged += (object sender, TextChangedEventArgs e) =>
+            {
+                if (!_resx.KVPs.ContainsKey(syncKey.Key))
                 {
-                    valueTB.Text = resx.KVPs[syncKey.Key];
+                    syncKey.Owners.Add(_resx);
+                }
+                else if (ValueTB.Text == "")
+                {
+                    syncKey.Owners.Remove(_resx);
+                    _resx.KVPs.Remove(syncKey.Key);
+                    return;
                 }
 
-                valueTB.TextChanged += (object sender, TextChangedEventArgs e) =>
-                {
-                    resx.KVPs[syncKey.Key] = valueTB.Text;
-                };
+                _resx.KVPs[syncKey.Key] = ValueTB.Text;
+            };
 
-                kvpSP.Children.Add(valueTB);
+            Grid grid = new Grid();
 
-                ValuesSP.Children.Add(kvpSP);
-            }
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+
+            grid.Children.Add(KeyTB);
+            grid.Children.Add(ValueTB);
+
+            Grid.SetColumn(ValueTB, 1);
+
+            ValuesSP.Children.Add(grid);
         }
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)

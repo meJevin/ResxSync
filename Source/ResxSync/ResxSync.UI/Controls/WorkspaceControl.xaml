@@ -29,9 +29,9 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 
-                <StackPanel x:Name="LoadedResxFilesSP" Orientation="Horizontal" Grid.Column="1">
+                <Grid x:Name="LoadedResxFilesSP" Grid.Column="1">
 
-                </StackPanel>
+                </Grid>
             </Grid>
         </ScrollViewer>
     </Grid>

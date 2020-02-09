@@ -51,12 +51,19 @@ namespace ResxSync.Library.Core
         // Loaded from actual files
         public List<Resx> LoadedResx;
 
-        public Dictionary<string, SyncKey> SyncKeys;
+        private Dictionary<string, SyncKey> _syncKeys;
 
+        public List<SyncKey> SyncKeys
+        {
+            get
+            {
+                return _syncKeys.Values.ToList();
+            }
+        }
         public ResxSyncer()
         {
             LoadedResx = new List<Resx>();
-            SyncKeys = new Dictionary<string, SyncKey>();
+            _syncKeys = new Dictionary<string, SyncKey>();
         }
 
         public void Add(Resx rFile)
@@ -65,7 +72,7 @@ namespace ResxSync.Library.Core
 
             foreach (var key in rFile.KVPs.Keys)
             {
-                if (!SyncKeys.ContainsKey(key))
+                if (!_syncKeys.ContainsKey(key))
                 {
                     // New key!
 
@@ -76,13 +83,13 @@ namespace ResxSync.Library.Core
 
                     sKey.Owners.Add(rFile);
 
-                    SyncKeys.Add(key, sKey);
+                    _syncKeys.Add(key, sKey);
                 }
                 else
                 {
                     // Old key!
 
-                    SyncKeys[key].Owners.Add(rFile);
+                    _syncKeys[key].Owners.Add(rFile);
                 }
             }
         }
@@ -91,11 +98,11 @@ namespace ResxSync.Library.Core
         {
             foreach (var key in rFile.KVPs.Keys)
             {
-                SyncKeys[key].Owners.Remove(rFile);
+                _syncKeys[key].Owners.Remove(rFile);
 
-                if (SyncKeys[key].Owners.Count == 0)
+                if (_syncKeys[key].Owners.Count == 0)
                 {
-                    SyncKeys.Remove(key);
+                    _syncKeys.Remove(key);
                 }
             }
 
@@ -105,7 +112,7 @@ namespace ResxSync.Library.Core
         public List<string> CommonKeys()
         {
             return
-                SyncKeys.Where(kvp => kvp.Value.Owners.Count == LoadedResx.Count)
+                _syncKeys.Where(kvp => kvp.Value.Owners.Count == LoadedResx.Count)
                 .Select(kvp => kvp.Key)
                 .ToList();
         }
@@ -113,7 +120,7 @@ namespace ResxSync.Library.Core
         public List<string> UniqueTo(Resx rFile)
         {
             return
-                SyncKeys.Where((kvp) =>
+                _syncKeys.Where((kvp) =>
                 {
                     var owners = kvp.Value.Owners;
 
