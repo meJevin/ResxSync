@@ -24,6 +24,8 @@ namespace ResxSync.UI.Controls
         ResxSyncer syncer = new ResxSyncer();
         ResxControl focusedResx = null;
 
+        Dictionary<ResxControl, GridSplitter> ResxAndSplitters = new Dictionary<ResxControl, GridSplitter>();
+
         public WorkspaceControl()
         {
             InitializeComponent();
@@ -48,9 +50,21 @@ namespace ResxSync.UI.Controls
             resxControl.ContextMenu.Items.Add(deleteMI);
             resxControl.ContextMenuOpening += ResxControl_ContextMenuOpening;
 
-            LoadedResxFilesSP.Children.Add(resxControl);
+            LoadedResxFilesG.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            
+            LoadedResxFilesG.Children.Add(resxControl);
 
-            foreach (ResxControl resx in LoadedResxFilesSP.Children)
+            Grid.SetColumn(resxControl, LoadedResxFilesG.ColumnDefinitions.Count - 1);
+
+            GridSplitter splitter = new GridSplitter() { Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)), Width = 5, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Stretch };
+            LoadedResxFilesG.Children.Add(splitter);
+
+            Grid.SetColumn(splitter, LoadedResxFilesG.ColumnDefinitions.Count - 1);
+
+            ResxAndSplitters.Add(resxControl, splitter);
+            LoadedResxFilesG.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+
+            foreach (var resx in ResxAndSplitters.Keys)
             {
                 resx.Init(resx._resx, syncer);
             }
@@ -67,9 +81,9 @@ namespace ResxSync.UI.Controls
 
             syncer.Remove(resxToDelete);
 
-            LoadedResxFilesSP.Children.Remove(focusedResx);
+            LoadedResxFilesG.Children.Remove(focusedResx);
 
-            foreach (ResxControl resx in LoadedResxFilesSP.Children)
+            foreach (var resx in ResxAndSplitters.Keys)
             {
                 resx.Init(resx._resx, syncer);
             }
@@ -77,7 +91,7 @@ namespace ResxSync.UI.Controls
 
         private void ResxControl_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            foreach (ResxControl rx in LoadedResxFilesSP.Children)
+            foreach (var rx in ResxAndSplitters.Keys)
             {
                 if (rx == (sender as ResxControl))
                 {

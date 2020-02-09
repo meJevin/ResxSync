@@ -11,7 +11,7 @@
              MouseLeave="UserControl_MouseLeave">
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
-            <StackPanel x:Name="ValuesSP">
+            <StackPanel x:Name="ValuesSP" HorizontalAlignment="Stretch">
             </StackPanel>
         </ScrollViewer>
 

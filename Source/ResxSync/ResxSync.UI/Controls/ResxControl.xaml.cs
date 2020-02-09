@@ -73,7 +73,7 @@ namespace ResxSync.UI.Controls
                 _resx.KVPs[syncKey.Key] = ValueTB.Text;
             };
 
-            Grid grid = new Grid();
+            Grid grid = new Grid() { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch};
 
             grid.ColumnDefinitions.Add(new ColumnDefinition());
             grid.ColumnDefinitions.Add(new ColumnDefinition());

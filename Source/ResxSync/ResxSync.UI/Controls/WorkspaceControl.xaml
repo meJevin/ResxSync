@@ -29,7 +29,8 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 
-                <Grid x:Name="LoadedResxFilesSP" Grid.Column="1">
+                <Grid x:Name="LoadedResxFilesG" Grid.Column="1"
+                      HorizontalAlignment="Left" VerticalAlignment="Top">
 
                 </Grid>
             </Grid>
