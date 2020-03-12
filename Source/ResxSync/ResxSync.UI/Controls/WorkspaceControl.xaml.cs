@@ -81,6 +81,7 @@ namespace ResxSync.UI.Controls
 
             syncer.Remove(resxToDelete);
 
+            LoadedResxFilesG.Children.Remove(ResxAndSplitters[focusedResx]);
             LoadedResxFilesG.Children.Remove(focusedResx);
 
             foreach (var resx in ResxAndSplitters.Keys)
