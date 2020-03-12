@@ -40,7 +40,8 @@ namespace ResxSync.UI.Controls
 
             ResxControl resxControl = new ResxControl();
             resxControl.Init(loadedResx, syncer);
-            resxControl.Width = 250;
+            resxControl.MinWidth = 250;
+            resxControl.HorizontalAlignment = HorizontalAlignment.Stretch;
 
             resxControl.PreviewMouseDown += ResxControl_PreviewMouseDown;
 
@@ -56,7 +57,14 @@ namespace ResxSync.UI.Controls
 
             Grid.SetColumn(resxControl, LoadedResxFilesG.ColumnDefinitions.Count - 1);
 
-            GridSplitter splitter = new GridSplitter() { Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)), Width = 5, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Stretch };
+            GridSplitter splitter = new GridSplitter() 
+            { 
+                Background = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0)),
+                Width = 5, 
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Stretch,
+            };
+
             LoadedResxFilesG.Children.Add(splitter);
 
             Grid.SetColumn(splitter, LoadedResxFilesG.ColumnDefinitions.Count - 1);
