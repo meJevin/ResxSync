@@ -6,9 +6,7 @@
              xmlns:local="clr-namespace:ResxSync.UI.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="560.625" d:DesignWidth="428.75"
-             Background="White"
-             MouseEnter="UserControl_MouseEnter"
-             MouseLeave="UserControl_MouseLeave">
+             Background="White">
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
             <StackPanel x:Name="ValuesSP" HorizontalAlignment="Stretch">

@@ -47,16 +47,8 @@ namespace ResxSync.UI.Controls
                 HorizontalContentAlignment = HorizontalAlignment.Center,
                 VerticalContentAlignment = VerticalAlignment.Center,
                 Text = _resx.KVPs.ContainsKey(syncKey.Key) ? _resx.KVPs[syncKey.Key] : "",
+                Padding = new Thickness(5),
             };
-
-            TextBox KeyTB = new TextBox()
-            {
-                HorizontalContentAlignment = HorizontalAlignment.Center,
-                VerticalContentAlignment = VerticalAlignment.Center,
-                Text = syncKey.Key,
-                IsReadOnly = true,
-            };
-
             ValueTB.TextChanged += (object sender, TextChangedEventArgs e) =>
             {
                 if (!_resx.KVPs.ContainsKey(syncKey.Key))
@@ -73,6 +65,15 @@ namespace ResxSync.UI.Controls
                 _resx.KVPs[syncKey.Key] = ValueTB.Text;
             };
 
+            TextBox KeyTB = new TextBox()
+            {
+                HorizontalContentAlignment = HorizontalAlignment.Center,
+                VerticalContentAlignment = VerticalAlignment.Center,
+                Text = syncKey.Key,
+                IsReadOnly = true,
+                Padding = new Thickness(5),
+            };
+
             Grid grid = new Grid() { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch};
 
             grid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -84,28 +85,6 @@ namespace ResxSync.UI.Controls
             Grid.SetColumn(ValueTB, 1);
 
             ValuesSP.Children.Add(grid);
-        }
-
-        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
-        {
-            HighlightB.BorderBrush = new SolidColorBrush(Colors.Aqua);
-            HighlightB.BorderThickness = new Thickness(2);
-        }
-
-        private void UserControl_MouseLeave(object sender, MouseEventArgs e)
-        {
-            HighlightB.BorderThickness = new Thickness(0);
-        }
-
-        public void Select()
-        {
-            SelectionB.BorderBrush = new SolidColorBrush(Colors.Aquamarine);
-            SelectionB.BorderThickness = new Thickness(2);
-        }
-
-        public void Deselect()
-        {
-            SelectionB.BorderThickness = new Thickness(0);
         }
     }
 }

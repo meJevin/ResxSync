@@ -11,7 +11,7 @@
 
         <Grid.ContextMenu>
             <ContextMenu>
-                <MenuItem Header="Add" Click="AddResx"/>
+                <MenuItem Header="Add" Click="AddResxMI_Click"/>
             </ContextMenu>
         </Grid.ContextMenu>
 
@@ -30,7 +30,7 @@
                 </Grid.ColumnDefinitions>
                 
                 <Grid x:Name="LoadedResxFilesG" Grid.Column="1"
-                      HorizontalAlignment="Left" VerticalAlignment="Top">
+                      HorizontalAlignment="Left" VerticalAlignment="Top" ShowGridLines="True">
 
                 </Grid>
             </Grid>

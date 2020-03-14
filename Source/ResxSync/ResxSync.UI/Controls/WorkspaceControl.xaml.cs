@@ -31,10 +31,15 @@ namespace ResxSync.UI.Controls
             InitializeComponent();
         }
 
-        private void AddResx(object sender, RoutedEventArgs e)
+        private void AddResxMI_Click(object sender, RoutedEventArgs e)
         {
             var path = Utils.SelectFile();
 
+            AddResxControl(path);
+        }
+
+        private void AddResxControl(string path)
+        {
             Resx loadedResx = new Resx(path);
             syncer.Add(loadedResx);
 
@@ -43,8 +48,6 @@ namespace ResxSync.UI.Controls
             resxControl.MinWidth = 250;
             resxControl.HorizontalAlignment = HorizontalAlignment.Stretch;
 
-            resxControl.PreviewMouseDown += ResxControl_PreviewMouseDown;
-
             resxControl.ContextMenu = new ContextMenu();
             var deleteMI = new MenuItem() { Header = "Delete" };
             deleteMI.Click += DeleteMI_Click;
@@ -52,15 +55,15 @@ namespace ResxSync.UI.Controls
             resxControl.ContextMenuOpening += ResxControl_ContextMenuOpening;
 
             LoadedResxFilesG.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            
+
             LoadedResxFilesG.Children.Add(resxControl);
 
             Grid.SetColumn(resxControl, LoadedResxFilesG.ColumnDefinitions.Count - 1);
 
-            GridSplitter splitter = new GridSplitter() 
-            { 
+            GridSplitter splitter = new GridSplitter()
+            {
                 Background = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0)),
-                Width = 5, 
+                Width = 5,
                 HorizontalAlignment = HorizontalAlignment.Right,
                 VerticalAlignment = VerticalAlignment.Stretch,
             };
@@ -95,22 +98,6 @@ namespace ResxSync.UI.Controls
             foreach (var resx in ResxAndSplitters.Keys)
             {
                 resx.Init(resx._resx, syncer);
-            }
-        }
-
-        private void ResxControl_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            foreach (var rx in ResxAndSplitters.Keys)
-            {
-                if (rx == (sender as ResxControl))
-                {
-                    focusedResx = rx;
-                    rx.Select();
-                }
-                else
-                {
-                    rx.Deselect();
-                }
             }
         }
     }
