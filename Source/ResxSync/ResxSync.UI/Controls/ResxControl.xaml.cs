@@ -23,6 +23,8 @@ namespace ResxSync.UI.Controls
     {
         public Resx _resx;
 
+        public event EventHandler Deleted;
+
         public ResxControl()
         {
             InitializeComponent();
@@ -77,6 +79,11 @@ namespace ResxSync.UI.Controls
 
             ValuesSP.Children.Add(ValueTB);
             KeysSP.Children.Add(KeyTB);
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Deleted?.Invoke(this, e);
         }
     }
 }

@@ -33,6 +33,10 @@
                      HorizontalAlignment="Stretch" VerticalAlignment="Top"
                      />
             </Expander>
+
+            <Button Width="20" Height="20" Content="X"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Click="DeleteButton_Click"/>
         </Grid>
     </ScrollViewer>
 </UserControl>

@@ -22,38 +22,63 @@ namespace ResxSync.UI.Controls
     public partial class WorkspaceControl : UserControl
     {
         ResxSyncer syncer = new ResxSyncer();
-        ResxControl focusedResx = null;
 
         Dictionary<ResxControl, GridSplitter> ResxAndSplitters = new Dictionary<ResxControl, GridSplitter>();
 
         public WorkspaceControl()
         {
             InitializeComponent();
-            AddResxControl(@"..\..\..\ResxSync.Library.Tests\Dummy\1.resx");
-            AddResxControl(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
-            AddResxControl(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
-            AddResxControl(@"..\..\..\ResxSync.Library.Tests\Dummy\3.resx");
+            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\1.resx");
+            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
+            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
+            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\3.resx");
         }
 
-        private void AddResxControl(string path)
+        public void AddResx(string path)
         {
-            // Last phantom item so that we can resize the last item in grid via gridsplitter
-            LoadedResxFilesG.ColumnDefinitions.RemoveAt(LoadedResxFilesG.ColumnDefinitions.Count - 1);
-
             // Load resx and add it to syncer
             Resx loadedResx = new Resx(path);
+
+            AddResxControl(loadedResx);
+        }
+
+        private void RemoveResxControl(ResxControl resxControl)
+        {
+            // Remove ResxControl and its gridsplitter from main grid
+            var resxControlColumnIndex = Grid.GetColumn(resxControl);
+            var resxControlChildIndex = ResxControlsG.Children.IndexOf(resxControl);
+
+            for (int currIndx = resxControlChildIndex + 2; currIndx < ResxControlsG.Children.Count; ++currIndx)
+            {
+                var currChild = ResxControlsG.Children[currIndx];
+
+                Grid.SetColumn(currChild, Grid.GetColumn(currChild) - 2);
+            }
+
+            ResxControlsG.ColumnDefinitions.RemoveRange(resxControlColumnIndex, 2);
+            ResxControlsG.Children.RemoveRange(resxControlChildIndex, 2);
+        }
+
+        private void AddResxControl(Resx loadedResx)
+        {
+            // Last phantom item so that we can resize the last item in grid via gridsplitter
+            ResxControlsG.ColumnDefinitions.RemoveAt(ResxControlsG.ColumnDefinitions.Count - 1);
+
+            // Add to syncer
             syncer.Add(loadedResx);
 
             // Create ResxControl
-            ResxControl resxControl = new ResxControl()
-            {
-            };
+            ResxControl resxControl = new ResxControl();
             resxControl.Init(loadedResx, syncer);
+            resxControl.Deleted += (object sender, EventArgs args) =>
+            {
+                RemoveResxControl(sender as ResxControl);
+            };
 
             // Add it to grid
-            LoadedResxFilesG.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-            LoadedResxFilesG.Children.Add(resxControl);
-            Grid.SetColumn(resxControl, LoadedResxFilesG.ColumnDefinitions.Count - 1);
+            ResxControlsG.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            ResxControlsG.Children.Add(resxControl);
+            Grid.SetColumn(resxControl, ResxControlsG.ColumnDefinitions.Count - 1);
 
             // Create splitter for ResxControl
             GridSplitter splitter = new GridSplitter()
@@ -64,9 +89,9 @@ namespace ResxSync.UI.Controls
             };
 
             // Add it to grid
-            LoadedResxFilesG.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(5) });
-            LoadedResxFilesG.Children.Add(splitter);
-            Grid.SetColumn(splitter, LoadedResxFilesG.ColumnDefinitions.Count - 1);
+            ResxControlsG.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(5) });
+            ResxControlsG.Children.Add(splitter);
+            Grid.SetColumn(splitter, ResxControlsG.ColumnDefinitions.Count - 1);
 
             ResxAndSplitters.Add(resxControl, splitter);
 
@@ -76,7 +101,7 @@ namespace ResxSync.UI.Controls
             }
 
             // Last phantom item so that we can resize the last item in grid via gridsplitter
-            LoadedResxFilesG.ColumnDefinitions.Add(new ColumnDefinition());
+            ResxControlsG.ColumnDefinitions.Add(new ColumnDefinition());
         }
     }
 }
