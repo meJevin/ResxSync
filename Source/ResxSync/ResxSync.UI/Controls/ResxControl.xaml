@@ -10,9 +10,9 @@
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="0"/>
+                <ColumnDefinition/>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition MinWidth="0"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <StackPanel x:Name="KeysSP" Grid.Column="0"/>
