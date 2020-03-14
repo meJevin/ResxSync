@@ -35,75 +35,48 @@ namespace ResxSync.UI.Controls
             AddResxControl(@"..\..\..\ResxSync.Library.Tests\Dummy\3.resx");
         }
 
-        private void AddResxMI_Click(object sender, RoutedEventArgs e)
-        {
-            var path = Utils.SelectFile();
-
-            AddResxControl(path);
-        }
-
         private void AddResxControl(string path)
         {
+            // Last phantom item so that we can resize the last item in grid via gridsplitter
+            LoadedResxFilesG.ColumnDefinitions.RemoveAt(LoadedResxFilesG.ColumnDefinitions.Count - 1);
+
+            // Load resx and add it to syncer
             Resx loadedResx = new Resx(path);
             syncer.Add(loadedResx);
 
-            ResxControl resxControl = new ResxControl();
+            // Create ResxControl
+            ResxControl resxControl = new ResxControl()
+            {
+            };
             resxControl.Init(loadedResx, syncer);
-            resxControl.MinWidth = 0;
-            resxControl.HorizontalAlignment = HorizontalAlignment.Stretch;
-            resxControl.Margin = new Thickness(0, 0, 5, 0);
 
-            resxControl.ContextMenu = new ContextMenu();
-            var deleteMI = new MenuItem() { Header = "Delete" };
-            deleteMI.Click += DeleteMI_Click;
-            resxControl.ContextMenu.Items.Add(deleteMI);
-            resxControl.ContextMenuOpening += ResxControl_ContextMenuOpening;
-
+            // Add it to grid
             LoadedResxFilesG.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-
             LoadedResxFilesG.Children.Add(resxControl);
-
             Grid.SetColumn(resxControl, LoadedResxFilesG.ColumnDefinitions.Count - 1);
 
+            // Create splitter for ResxControl
             GridSplitter splitter = new GridSplitter()
             {
                 Background = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0)),
-                Width = 5,
-                HorizontalAlignment = HorizontalAlignment.Right,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Stretch,
             };
 
+            // Add it to grid
+            LoadedResxFilesG.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(5) });
             LoadedResxFilesG.Children.Add(splitter);
-
             Grid.SetColumn(splitter, LoadedResxFilesG.ColumnDefinitions.Count - 1);
 
             ResxAndSplitters.Add(resxControl, splitter);
-            LoadedResxFilesG.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
             foreach (var resx in ResxAndSplitters.Keys)
             {
                 resx.Init(resx._resx, syncer);
             }
-        }
 
-        private void ResxControl_ContextMenuOpening(object sender, ContextMenuEventArgs e)
-        {
-            focusedResx = (sender as ResxControl);
-        }
-
-        private void DeleteMI_Click(object sender, RoutedEventArgs e)
-        {
-            // Remove from syncer
-            var resxToDelete = focusedResx._resx;
-            syncer.Remove(resxToDelete);
-
-            LoadedResxFilesG.Children.Remove(ResxAndSplitters[focusedResx]);
-            LoadedResxFilesG.Children.Remove(focusedResx);
-
-            foreach (var resx in ResxAndSplitters.Keys)
-            {
-                resx.Init(resx._resx, syncer);
-            }
+            // Last phantom item so that we can resize the last item in grid via gridsplitter
+            LoadedResxFilesG.ColumnDefinitions.Add(new ColumnDefinition());
         }
     }
 }

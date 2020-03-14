@@ -9,20 +9,30 @@
              Background="White">
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-            <StackPanel x:Name="KeysSP" Grid.Column="0"/>
+                <StackPanel x:Name="KeysSP" Grid.Column="0"/>
 
-            <GridSplitter Grid.Column="1"
+                <GridSplitter Grid.Column="1"
                       VerticalAlignment="Stretch" HorizontalAlignment="Center"
                       Width="5"
                       Background="Red"/>
 
-            <StackPanel x:Name="ValuesSP" Grid.Column="2"/>
+                <StackPanel x:Name="ValuesSP" Grid.Column="2"/>
+            </Grid>
+
+            <Expander Header="Resx Name" IsExpanded="False" 
+                      VerticalAlignment="Top" HorizontalAlignment="Center"
+                      Background="White" BorderBrush="Black" Padding="10 5">
+                <TextBox x:Name="ResxNameTB" Padding="5"
+                     HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                     />
+            </Expander>
         </Grid>
     </ScrollViewer>
 </UserControl>
