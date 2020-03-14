@@ -29,6 +29,10 @@ namespace ResxSync.UI.Controls
         public WorkspaceControl()
         {
             InitializeComponent();
+            AddResxControl(@"..\..\..\ResxSync.Library.Tests\Dummy\1.resx");
+            AddResxControl(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
+            AddResxControl(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
+            AddResxControl(@"..\..\..\ResxSync.Library.Tests\Dummy\3.resx");
         }
 
         private void AddResxMI_Click(object sender, RoutedEventArgs e)
@@ -45,8 +49,9 @@ namespace ResxSync.UI.Controls
 
             ResxControl resxControl = new ResxControl();
             resxControl.Init(loadedResx, syncer);
-            resxControl.MinWidth = 250;
+            resxControl.MinWidth = 0;
             resxControl.HorizontalAlignment = HorizontalAlignment.Stretch;
+            resxControl.Margin = new Thickness(0, 0, 5, 0);
 
             resxControl.ContextMenu = new ContextMenu();
             var deleteMI = new MenuItem() { Header = "Delete" };
@@ -88,8 +93,8 @@ namespace ResxSync.UI.Controls
 
         private void DeleteMI_Click(object sender, RoutedEventArgs e)
         {
+            // Remove from syncer
             var resxToDelete = focusedResx._resx;
-
             syncer.Remove(resxToDelete);
 
             LoadedResxFilesG.Children.Remove(ResxAndSplitters[focusedResx]);

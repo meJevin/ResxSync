@@ -32,6 +32,7 @@ namespace ResxSync.UI.Controls
         {
             _resx = resx;
 
+            KeysSP.Children.Clear();
             ValuesSP.Children.Clear();
 
             foreach (var syncKey in syncer.SyncKeys)
@@ -74,17 +75,8 @@ namespace ResxSync.UI.Controls
                 Padding = new Thickness(5),
             };
 
-            Grid grid = new Grid() { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch};
-
-            grid.ColumnDefinitions.Add(new ColumnDefinition());
-            grid.ColumnDefinitions.Add(new ColumnDefinition());
-
-            grid.Children.Add(KeyTB);
-            grid.Children.Add(ValueTB);
-
-            Grid.SetColumn(ValueTB, 1);
-
-            ValuesSP.Children.Add(grid);
+            ValuesSP.Children.Add(ValueTB);
+            KeysSP.Children.Add(KeyTB);
         }
     }
 }

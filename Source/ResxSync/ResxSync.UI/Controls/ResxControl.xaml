@@ -8,9 +8,21 @@
              d:DesignHeight="560.625" d:DesignWidth="428.75"
              Background="White">
     <Grid>
-        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
-            <StackPanel x:Name="ValuesSP" HorizontalAlignment="Stretch">
-            </StackPanel>
-        </ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel x:Name="KeysSP" Grid.Column="0"/>
+
+            <GridSplitter Grid.Column="1"
+                      VerticalAlignment="Stretch" HorizontalAlignment="Center"
+                      Width="5"
+                      Background="Red"/>
+
+            <StackPanel x:Name="ValuesSP" Grid.Column="2"/>
+        </Grid>
     </Grid>
 </UserControl>
