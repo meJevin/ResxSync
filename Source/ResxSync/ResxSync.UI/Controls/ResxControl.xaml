@@ -12,8 +12,5 @@
             <StackPanel x:Name="ValuesSP" HorizontalAlignment="Stretch">
             </StackPanel>
         </ScrollViewer>
-
-        <Border x:Name="SelectionB"/>
-        <Border x:Name="HighlightB"/>
     </Grid>
 </UserControl>
