@@ -57,11 +57,6 @@ namespace ResxSync.UI.Controls
 
             ResxControlsG.ColumnDefinitions.RemoveRange(resxControlColumnIndex, 2);
             ResxControlsG.Children.RemoveRange(resxControlChildIndex, 2);
-
-            foreach (var resx in ResxAndSplitters.Keys)
-            {
-                resx.Init(resx._resx, syncer);
-            }
         }
 
         private void AddResxControl(Resx loadedResx)
@@ -77,7 +72,16 @@ namespace ResxSync.UI.Controls
             resxControl.Init(loadedResx, syncer);
             resxControl.Deleted += (object sender, EventArgs args) =>
             {
-                RemoveResxControl(sender as ResxControl);
+                var resxControlToDelete = sender as ResxControl;
+
+                RemoveResxControl(resxControlToDelete);
+
+                syncer.Remove(resxControlToDelete._resx);
+
+                foreach (var resx in ResxAndSplitters.Keys)
+                {
+                    resx.Init(resx._resx, syncer);
+                }
             };
 
             // Add it to grid
