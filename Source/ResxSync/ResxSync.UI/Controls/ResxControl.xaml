@@ -9,7 +9,7 @@
              Background="White">
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
         <Grid>
-            <Grid Grid.ColumnSpan="2">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="5"/>
