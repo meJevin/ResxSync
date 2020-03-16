@@ -40,7 +40,7 @@ namespace ResxSync.UI.Controls
             Resx loadedResx = new Resx(path);
 
             AddResxControl(loadedResx);
-        }
+        }  
 
         private void RemoveResxControl(ResxControl resxControl)
         {
@@ -57,6 +57,11 @@ namespace ResxSync.UI.Controls
 
             ResxControlsG.ColumnDefinitions.RemoveRange(resxControlColumnIndex, 2);
             ResxControlsG.Children.RemoveRange(resxControlChildIndex, 2);
+
+            foreach (var resx in ResxAndSplitters.Keys)
+            {
+                resx.Init(resx._resx, syncer);
+            }
         }
 
         private void AddResxControl(Resx loadedResx)
