@@ -9,7 +9,7 @@
              Background="White">
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
         <Grid>
-            <Grid>
+            <Grid Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="5"/>
@@ -28,7 +28,7 @@
 
             <Expander Header="Resx Name" IsExpanded="False" 
                       VerticalAlignment="Top" HorizontalAlignment="Center"
-                      Background="White" BorderBrush="Black" Padding="10 5">
+                      Background="White" BorderBrush="Black" Padding="10 5" Grid.Column="1">
                 <TextBox x:Name="ResxNameTB" Padding="5"
                      HorizontalAlignment="Stretch" VerticalAlignment="Top"
                      />
@@ -36,7 +36,7 @@
 
             <Button Width="20" Height="20" Content="X"
                     HorizontalAlignment="Right" VerticalAlignment="Top"
-                    Click="DeleteButton_Click"/>
+                    Click="DeleteButton_Click" Grid.Column="1"/>
         </Grid>
     </ScrollViewer>
 </UserControl>
