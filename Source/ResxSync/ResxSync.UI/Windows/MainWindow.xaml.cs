@@ -27,5 +27,17 @@ namespace ResxSync.UI
         {
             InitializeComponent();
         }
+
+        private void AddFileMI_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            var res = ofd.ShowDialog();
+
+            if (res.HasValue && res.Value)
+            {
+                CurrentWorkspace.AddResx(ofd.FileName);
+            }
+        }
     }
 }

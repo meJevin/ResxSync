@@ -25,13 +25,19 @@ namespace ResxSync.UI.Controls
 
         Dictionary<ResxControl, GridSplitter> ResxAndSplitters = new Dictionary<ResxControl, GridSplitter>();
 
+        Dictionary<SyncKey, SyncKeyControl> SyncKeyControls = new Dictionary<SyncKey, SyncKeyControl>();
+
         public WorkspaceControl()
         {
             InitializeComponent();
             AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\1.resx");
             AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
+            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\1.resx");
             AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
-            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\3.resx");
+            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\1.resx");
+            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
+            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\1.resx");
+            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
         }
 
         public void AddResx(string path)
@@ -40,7 +46,32 @@ namespace ResxSync.UI.Controls
             Resx loadedResx = new Resx(path);
 
             AddResxControl(loadedResx);
+
+            UpdateWorksapceSyncKeys();
         }  
+
+        private void UpdateWorksapceSyncKeys()
+        {
+            WorkspaceSyncKeysSP.Children.Clear();
+            SyncKeyControls.Clear();
+
+            foreach (var syncKey in syncer.SyncKeys)
+            {
+                if (!SyncKeyControls.ContainsKey(syncKey))
+                {
+                    // Add it
+                    SyncKeyControl skc = new SyncKeyControl();
+                    skc.Init(syncKey, syncer);
+
+                    WorkspaceSyncKeysSP.Children.Add(skc);
+
+                    SyncKeyControls.Add(syncKey, skc);
+                }
+
+                // Update it's info
+                SyncKeyControls[syncKey].UpdateWith(syncKey);
+            }
+        }
 
         private void RemoveResxControl(ResxControl resxControl)
         {
@@ -82,10 +113,12 @@ namespace ResxSync.UI.Controls
                 {
                     resx.Init(resx._resx, syncer);
                 }
+
+                UpdateWorksapceSyncKeys();
             };
 
             // Add it to grid
-            ResxControlsG.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+            ResxControlsG.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(300) });
             ResxControlsG.Children.Add(resxControl);
             Grid.SetColumn(resxControl, ResxControlsG.ColumnDefinitions.Count - 1);
 

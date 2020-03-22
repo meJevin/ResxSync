@@ -60,6 +60,7 @@ namespace ResxSync.Library.Core
                 return _syncKeys.Values.ToList();
             }
         }
+
         public ResxSyncer()
         {
             LoadedResx = new List<Resx>();
@@ -107,6 +108,11 @@ namespace ResxSync.Library.Core
             }
 
             LoadedResx.Remove(rFile);
+        }
+
+        public bool ContainsKey(string key)
+        {
+            return _syncKeys.ContainsKey(key);
         }
 
         public List<string> CommonKeys()

@@ -63,6 +63,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\SyncKeyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\WorkspaceControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -80,6 +84,9 @@
     </Compile>
     <Compile Include="Controls\SelectableWorkspaceControl.xaml.cs">
       <DependentUpon>SelectableWorkspaceControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SyncKeyControl.xaml.cs">
+      <DependentUpon>SyncKeyControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\WorkspaceControl.xaml.cs">
       <DependentUpon>WorkspaceControl.xaml</DependentUpon>

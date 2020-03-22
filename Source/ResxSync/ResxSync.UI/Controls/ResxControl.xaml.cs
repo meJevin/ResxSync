@@ -34,8 +34,8 @@ namespace ResxSync.UI.Controls
         {
             _resx = resx;
 
-            KeysSP.Children.Clear();
             ValuesSP.Children.Clear();
+            //KeysSP.Children.Clear();
 
             foreach (var syncKey in syncer.SyncKeys)
             {
@@ -51,34 +51,49 @@ namespace ResxSync.UI.Controls
                 VerticalContentAlignment = VerticalAlignment.Center,
                 Text = _resx.KVPs.ContainsKey(syncKey.Key) ? _resx.KVPs[syncKey.Key] : "",
                 Padding = new Thickness(5),
+                TextWrapping = TextWrapping.NoWrap,
+                Height = 50,
             };
+
             ValueTB.TextChanged += (object sender, TextChangedEventArgs e) =>
             {
-                if (!_resx.KVPs.ContainsKey(syncKey.Key))
-                {
-                    syncKey.Owners.Add(_resx);
-                }
-                else if (ValueTB.Text == "")
-                {
-                    syncKey.Owners.Remove(_resx);
-                    _resx.KVPs.Remove(syncKey.Key);
-                    return;
-                }
-
-                _resx.KVPs[syncKey.Key] = ValueTB.Text;
+                SyncKey_ValueChanged(syncKey, ValueTB.Text);
+                HighlightValueTB(ValueTB);
             };
 
-            TextBox KeyTB = new TextBox()
-            {
-                HorizontalContentAlignment = HorizontalAlignment.Center,
-                VerticalContentAlignment = VerticalAlignment.Center,
-                Text = syncKey.Key,
-                IsReadOnly = true,
-                Padding = new Thickness(5),
-            };
+            HighlightValueTB(ValueTB);
 
             ValuesSP.Children.Add(ValueTB);
-            KeysSP.Children.Add(KeyTB);
+            //KeysSP.Children.Add(KeyTB);
+        }
+
+        private void SyncKey_ValueChanged(SyncKey syncKey, string newValue)
+        {
+            if (!_resx.KVPs.ContainsKey(syncKey.Key))
+            {
+                // Didn't have that key before, let's add it
+                syncKey.Owners.Add(_resx);
+            }
+            else if (newValue == "")
+            {
+                // Empty value for key, remove it
+                syncKey.Owners.Remove(_resx);
+                _resx.KVPs.Remove(syncKey.Key);
+            }
+
+            _resx.KVPs[syncKey.Key] = newValue;
+        }
+
+        private void HighlightValueTB(TextBox TB)
+        {
+            if (TB.Text == "")
+            {
+                TB.Background = new SolidColorBrush(Color.FromArgb(100, 255, 0, 0));
+            }
+            else
+            {
+                TB.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            }
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
