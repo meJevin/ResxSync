@@ -6,13 +6,18 @@
              xmlns:controls="clr-namespace:ResxSync.UI.Controls"
              mc:Ignorable="d" Height="50" Width="185">
     <Grid Background="Aqua">
-        <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="KeyTB" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5">
-            </TextBox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <TextBox x:Name="OwnersTB" IsReadOnly="True" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5">
-                3
+                10
             </TextBox>
-        </StackPanel>
+            <TextBox x:Name="KeyTB" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5" Grid.Column="1">
+                Nigga
+            </TextBox>
+        </Grid>
         <Button Width="20" Height="20" HorizontalAlignment="Right" Content="X"/>
     </Grid>
 </UserControl>

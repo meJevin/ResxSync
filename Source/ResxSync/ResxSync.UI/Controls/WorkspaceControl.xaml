@@ -21,7 +21,7 @@
             </Grid>
         </ScrollViewer>
 
-        <StackPanel x:Name="WorkspaceSyncKeysSP" Margin="0 50 0 0"
+        <StackPanel x:Name="WorkspaceSyncKeysSP"
                             HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

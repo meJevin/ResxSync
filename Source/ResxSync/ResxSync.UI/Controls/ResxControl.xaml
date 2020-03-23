@@ -8,9 +8,9 @@
              Background="White">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <TextBox x:Name="ResxNameTB"  Height="50" Padding="5" MinWidth="150"
+            <!--<TextBox x:Name="ResxNameTB"  Height="50" Padding="5" MinWidth="150"
                      HorizontalAlignment="Center" VerticalAlignment="Top"
-                     />
+                     />-->
             
             <ScrollViewer 
                            HorizontalScrollBarVisibility="Disabled"
