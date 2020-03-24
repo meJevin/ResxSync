@@ -17,23 +17,23 @@
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="5"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Grid>
                 <ListView x:Name="WorkspacesLV"
+                          ScrollViewer.CanContentScroll="False"
                           ScrollViewer.VerticalScrollBarVisibility="Visible"
                           HorizontalContentAlignment="Stretch"
                           SelectionChanged="WorkspacesLV_SelectionChanged"/>
-
-
             </Grid>
 
-            <Grid x:Name="CurrentWorkspaceG" Grid.Column="1">
+            <Grid x:Name="CurrentWorkspaceG" Grid.Column="2">
             </Grid>
 
-            <GridSplitter Grid.Column ="0" Background="Transparent" Width="5"
-                HorizontalAlignment="Right" VerticalAlignment="Stretch"/>
+            <GridSplitter Grid.Column ="1" Background="LightGray"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </Grid>
     </DockPanel>
 </Window>

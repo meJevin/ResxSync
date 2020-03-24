@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:ResxSync.UI.Controls"
              xmlns:other="clr-namespace:ResxSync.UI.Controls.Other"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Background="Gray">
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <ScrollViewer 
             HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
@@ -29,6 +28,6 @@
                             HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Grid>
         </ScrollViewer>
-        <other:BindableScrollBar BoundScrollViewer="{Binding ElementName=Test}" Orientation="Horizontal" VerticalAlignment="Bottom"/>
+        <other:BindableScrollBar Style="{StaticResource MaterialDesignScrollBar}" BoundScrollViewer="{Binding ElementName=Test}" Orientation="Horizontal" VerticalAlignment="Bottom"/>
     </Grid>
 </UserControl>
