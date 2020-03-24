@@ -30,8 +30,6 @@ namespace ResxSync.UI.Controls
         public WorkspaceControl()
         {
             InitializeComponent();
-            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\1.resx");
-            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
         }
 
         public void AddResx(string path)

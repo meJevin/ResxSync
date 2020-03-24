@@ -11,13 +11,12 @@
                 <ColumnDefinition Width="30"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="OwnersTB" IsReadOnly="True" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5">
+            <TextBox x:Name="OwnersTB" IsReadOnly="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="5">
                 10
             </TextBox>
-            <TextBox x:Name="KeyTB" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5" Grid.Column="1">
+            <TextBox x:Name="KeyTB" IsReadOnly="True" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5" Grid.Column="1">
                 Nigga
             </TextBox>
         </Grid>
-        <Button Width="20" Height="20" HorizontalAlignment="Right" Content="X"/>
     </Grid>
 </UserControl>
