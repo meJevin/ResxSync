@@ -23,9 +23,11 @@
 
             <Grid>
                 <ListView x:Name="WorkspacesLV"
-                      ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                          ScrollViewer.VerticalScrollBarVisibility="Visible"
+                          HorizontalContentAlignment="Stretch"
+                          SelectionChanged="WorkspacesLV_SelectionChanged"/>
 
-                </ListView>
+
             </Grid>
 
             <Grid Grid.Column="1">

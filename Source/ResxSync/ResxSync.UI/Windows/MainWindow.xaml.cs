@@ -26,6 +26,18 @@ namespace ResxSync.UI
         public MainWindow()
         {
             InitializeComponent();
+
+            WorkspacesLV.Items.Add(new SelectableWorkspaceControl());
+            WorkspacesLV.Items.Add(new SelectableWorkspaceControl());
+            WorkspacesLV.Items.Add(new SelectableWorkspaceControl());
+
+            foreach (SelectableWorkspaceControl ws in WorkspacesLV.Items)
+            {
+                ws.Deleted += (object sender, EventArgs e) =>
+                {
+                    WorkspacesLV.Items.Remove(sender);
+                };
+            }
         }
 
         private void AddFileMI_Click(object sender, RoutedEventArgs e)
@@ -38,6 +50,23 @@ namespace ResxSync.UI
             {
                 CurrentWorkspace.AddResx(ofd.FileName);
             }
+        }
+
+        private void WorkspacesLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (WorkspacesLV.SelectedItem == null)
+            {
+                return;
+            }
+
+            var wsSelected = WorkspacesLV.SelectedItem as SelectableWorkspaceControl;
+
+            foreach (SelectableWorkspaceControl ws in WorkspacesLV.Items)
+            {
+                ws.Deselect();
+            }
+
+            wsSelected.Select();
         }
     }
 }

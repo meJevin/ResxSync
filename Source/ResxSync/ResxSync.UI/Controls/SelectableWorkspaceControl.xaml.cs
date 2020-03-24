@@ -20,9 +20,51 @@ namespace ResxSync.UI.Controls
     /// </summary>
     public partial class SelectableWorkspaceControl : UserControl
     {
+        public event EventHandler Deleted;
+
+        public event EventHandler Selected;
+        public event EventHandler Deselected;
+
+        private bool _isSelected = false;
+        public bool IsSelected
+        {
+            get
+            {
+                return _isSelected;
+            }
+        }
+
         public SelectableWorkspaceControl()
         {
             InitializeComponent();
+        }
+
+        public void Select()
+        {
+            _isSelected = true;
+
+            BorderThickness = new Thickness(3);
+
+            Selected?.Invoke(this, null);
+        }
+
+        public void Delete()
+        {
+            Deleted?.Invoke(this, null);
+        }
+
+        public void Deselect()
+        {
+            _isSelected = false;
+
+            BorderThickness = new Thickness(0);
+
+            Deselected?.Invoke(this, null);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Delete();
         }
     }
 }
