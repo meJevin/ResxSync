@@ -117,7 +117,7 @@ namespace ResxSync.UI.Controls
             // Create splitter for ResxControl
             GridSplitter splitter = new GridSplitter()
             {
-                Background = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0)),
+                Background = new SolidColorBrush(Colors.Black),
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Stretch,
             };

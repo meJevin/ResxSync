@@ -4,25 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ResxSync.UI.Controls"
-             mc:Ignorable="d" d:DesignWidth="428.75"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
              Background="White">
-    <Grid>
-        <StackPanel Orientation="Vertical">
-            <!--<TextBox x:Name="ResxNameTB"  Height="50" Padding="5" MinWidth="150"
+    <materialDesign:Card>
+        <Grid>
+            <StackPanel Orientation="Vertical">
+                <!--<TextBox x:Name="ResxNameTB"  Height="50" Padding="5" MinWidth="150"
                      HorizontalAlignment="Center" VerticalAlignment="Top"
                      />-->
-            
-            <ScrollViewer 
+
+                <ScrollViewer 
                            HorizontalScrollBarVisibility="Disabled"
                            VerticalScrollBarVisibility="Disabled">
-                <StackPanel x:Name="ValuesSP">
+                    <StackPanel x:Name="ValuesSP">
 
-                </StackPanel>
-            </ScrollViewer>
-        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
 
-        <Button Width="20" Height="20" Content="X" Margin="10"
+            <Button Background="Transparent"
                     HorizontalAlignment="Right" VerticalAlignment="Top"
-                    Click="DeleteButton_Click"/>
-    </Grid>
+                    Click="DeleteButton_Click" BorderThickness="0">
+                <materialDesign:PackIcon Kind="Delete"/>
+            </Button>
+        </Grid>
+    </materialDesign:Card>
 </UserControl>

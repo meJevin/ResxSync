@@ -4,19 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:ResxSync.UI.Controls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" Height="50" Width="185">
-    <Grid Background="Aqua">
+    <materialDesign:Card>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="50"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="OwnersTB" IsReadOnly="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="5">
-                10
+            <TextBox x:Name="OwnersTB" IsReadOnly="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                
             </TextBox>
             <TextBox x:Name="KeyTB" IsReadOnly="True" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="5" Grid.Column="1">
-                Nigga
             </TextBox>
         </Grid>
-    </Grid>
+    </materialDesign:Card>
 </UserControl>
