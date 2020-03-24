@@ -79,6 +79,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\Other\BindableScrollBar.cs" />
     <Compile Include="Controls\ResxControl.xaml.cs">
       <DependentUpon>ResxControl.xaml</DependentUpon>
     </Compile>
