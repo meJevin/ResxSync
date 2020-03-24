@@ -60,8 +60,6 @@ namespace ResxSync.UI.Controls
         {
             _isSelected = true;
 
-            BorderThickness = new Thickness(3);
-
             Selected?.Invoke(this, new SelectableWorkspaceControlEventArgs() { Control = this, Workspace = _workspace });
         }
 
@@ -73,8 +71,6 @@ namespace ResxSync.UI.Controls
         public void Deselect()
         {
             _isSelected = false;
-
-            BorderThickness = new Thickness(0);
 
             Deselected?.Invoke(this, new SelectableWorkspaceControlEventArgs() { Control = this, Workspace = _workspace });
         }

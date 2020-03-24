@@ -23,59 +23,54 @@ namespace ResxSync.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private WorkspaceControl CurrentWorkspace;
+        private WorkspaceControl _currentWorkspace;
+        public WorkspaceControl CurrentWorkspace
+        {
+            get
+            {
+                return _currentWorkspace;
+            }
+        }
 
         public MainWindow()
         {
             InitializeComponent();
+        }
 
-            WorkspacesLV.Items.Add(new SelectableWorkspaceControl());
-            WorkspacesLV.Items.Add(new SelectableWorkspaceControl());
-            WorkspacesLV.Items.Add(new SelectableWorkspaceControl());
+        private void CreateNewWorkspace()
+        {
+            SelectableWorkspaceControl swc = new SelectableWorkspaceControl();
 
-            foreach (SelectableWorkspaceControl ws in WorkspacesLV.Items)
+            WorkspacesLV.Items.Add(swc);
+
+            swc.Deleted += (object sender, SelectableWorkspaceControlEventArgs e) =>
             {
-                ws.Deleted += (object sender, SelectableWorkspaceControlEventArgs e) =>
-                {
-                    // Remove from ListView
-                    WorkspacesLV.Items.Remove(e.Control);
+                // Remove from ListView
+                WorkspacesLV.Items.Remove(e.Control);
 
-                    DeleteWorkspace(e.Workspace);
-                };
+                DeleteWorkspace(e.Workspace);
+            };
 
-                ws.Selected += (object sender, SelectableWorkspaceControlEventArgs e) =>
-                {
-                    SelectWorkspace(e.Workspace);
-                };
-            }
+            swc.Selected += (object sender, SelectableWorkspaceControlEventArgs e) =>
+            {
+                SelectWorkspace(e.Workspace);
+            };
         }
 
         private void SelectWorkspace(WorkspaceControl wsToSelect)
         {
-            CurrentWorkspace = wsToSelect;
+            _currentWorkspace = wsToSelect;
 
             CurrentWorkspaceG.Children.Clear();
-            CurrentWorkspaceG.Children.Add(CurrentWorkspace);
+            CurrentWorkspaceG.Children.Add(_currentWorkspace);
         }
 
         private void DeleteWorkspace(WorkspaceControl wsToDelete)
         {
-            if (CurrentWorkspace == wsToDelete)
+            if (_currentWorkspace == wsToDelete)
             {
                 CurrentWorkspaceG.Children.Clear();
-                CurrentWorkspace = null;
-            }
-        }
-
-        private void AddFileMI_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-
-            var res = ofd.ShowDialog();
-
-            if (res.HasValue && res.Value)
-            {
-                CurrentWorkspace.AddResx(ofd.FileName);
+                _currentWorkspace = null;
             }
         }
 
@@ -94,6 +89,33 @@ namespace ResxSync.UI
             }
 
             wsSelected.Select();
+        }
+
+        private void AddWorkspaceMI_Click(object sender, RoutedEventArgs e)
+        {
+            CreateNewWorkspace();
+        }
+
+        private void AddResxMI_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentWorkspace == null)
+            {
+                MessageBox.Show("No workspace selected!");
+                return;
+            }
+
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Filter = "Resx files | *.resx",
+                RestoreDirectory = true,
+            };
+
+            var res = ofd.ShowDialog();
+
+            if (res.HasValue && res.Value)
+            {
+                _currentWorkspace.AddResx(ofd.FileName);
+            }
         }
     }
 }
