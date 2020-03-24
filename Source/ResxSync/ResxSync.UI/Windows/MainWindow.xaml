@@ -30,8 +30,7 @@
 
             </Grid>
 
-            <Grid Grid.Column="1">
-                <controls:WorkspaceControl x:Name="CurrentWorkspace"/>
+            <Grid x:Name="CurrentWorkspaceG" Grid.Column="1">
             </Grid>
 
             <GridSplitter Grid.Column ="0" Background="Transparent" Width="5"

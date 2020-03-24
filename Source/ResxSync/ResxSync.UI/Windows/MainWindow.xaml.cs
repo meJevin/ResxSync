@@ -23,6 +23,8 @@ namespace ResxSync.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private WorkspaceControl CurrentWorkspace;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,10 +35,35 @@ namespace ResxSync.UI
 
             foreach (SelectableWorkspaceControl ws in WorkspacesLV.Items)
             {
-                ws.Deleted += (object sender, EventArgs e) =>
+                ws.Deleted += (object sender, SelectableWorkspaceControlEventArgs e) =>
                 {
-                    WorkspacesLV.Items.Remove(sender);
+                    // Remove from ListView
+                    WorkspacesLV.Items.Remove(e.Control);
+
+                    DeleteWorkspace(e.Workspace);
                 };
+
+                ws.Selected += (object sender, SelectableWorkspaceControlEventArgs e) =>
+                {
+                    SelectWorkspace(e.Workspace);
+                };
+            }
+        }
+
+        private void SelectWorkspace(WorkspaceControl wsToSelect)
+        {
+            CurrentWorkspace = wsToSelect;
+
+            CurrentWorkspaceG.Children.Clear();
+            CurrentWorkspaceG.Children.Add(CurrentWorkspace);
+        }
+
+        private void DeleteWorkspace(WorkspaceControl wsToDelete)
+        {
+            if (CurrentWorkspace == wsToDelete)
+            {
+                CurrentWorkspaceG.Children.Clear();
+                CurrentWorkspace = null;
             }
         }
 

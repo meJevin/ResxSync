@@ -15,15 +15,30 @@ using System.Windows.Shapes;
 
 namespace ResxSync.UI.Controls
 {
+    public class SelectableWorkspaceControlEventArgs : EventArgs
+    {
+        public SelectableWorkspaceControl Control;
+        public WorkspaceControl Workspace;
+    }
+
     /// <summary>
     /// Interaction logic for SelectableWorkspaceControl.xaml
     /// </summary>
     public partial class SelectableWorkspaceControl : UserControl
     {
-        public event EventHandler Deleted;
+        public event EventHandler<SelectableWorkspaceControlEventArgs> Deleted;
 
-        public event EventHandler Selected;
-        public event EventHandler Deselected;
+        public event EventHandler<SelectableWorkspaceControlEventArgs> Selected;
+        public event EventHandler<SelectableWorkspaceControlEventArgs> Deselected;
+
+        private WorkspaceControl _workspace;
+        public WorkspaceControl Workspace
+        {
+            get
+            {
+                return _workspace;
+            }
+        }
 
         private bool _isSelected = false;
         public bool IsSelected
@@ -37,6 +52,8 @@ namespace ResxSync.UI.Controls
         public SelectableWorkspaceControl()
         {
             InitializeComponent();
+
+            _workspace = new WorkspaceControl();
         }
 
         public void Select()
@@ -45,12 +62,12 @@ namespace ResxSync.UI.Controls
 
             BorderThickness = new Thickness(3);
 
-            Selected?.Invoke(this, null);
+            Selected?.Invoke(this, new SelectableWorkspaceControlEventArgs() { Control = this, Workspace = _workspace });
         }
 
         public void Delete()
         {
-            Deleted?.Invoke(this, null);
+            Deleted?.Invoke(this, new SelectableWorkspaceControlEventArgs() { Control = this, Workspace = _workspace });
         }
 
         public void Deselect()
@@ -59,7 +76,7 @@ namespace ResxSync.UI.Controls
 
             BorderThickness = new Thickness(0);
 
-            Deselected?.Invoke(this, null);
+            Deselected?.Invoke(this, new SelectableWorkspaceControlEventArgs() { Control = this, Workspace = _workspace });
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
