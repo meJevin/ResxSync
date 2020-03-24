@@ -18,10 +18,10 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                 </Grid>
+
+                <StackPanel x:Name="WorkspaceSyncKeysSP"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Grid>
         </ScrollViewer>
-
-        <StackPanel x:Name="WorkspaceSyncKeysSP"
-                            HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

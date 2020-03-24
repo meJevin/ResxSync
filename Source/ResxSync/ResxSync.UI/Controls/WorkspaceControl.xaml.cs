@@ -32,12 +32,6 @@ namespace ResxSync.UI.Controls
             InitializeComponent();
             AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\1.resx");
             AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
-            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\1.resx");
-            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
-            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\1.resx");
-            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
-            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\1.resx");
-            AddResx(@"..\..\..\ResxSync.Library.Tests\Dummy\2.resx");
         }
 
         public void AddResx(string path)
