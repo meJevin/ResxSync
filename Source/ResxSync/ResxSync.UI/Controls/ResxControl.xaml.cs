@@ -98,12 +98,27 @@ namespace ResxSync.UI.Controls
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("You sure?", "Deleting a resx", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                return;
+            }
+
             Deleted?.Invoke(this, e);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void EditButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ButtonsSP.Visibility = Visibility.Visible;
+        }
+
+        private void UserControl_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ButtonsSP.Visibility = Visibility.Hidden;
         }
     }
 }

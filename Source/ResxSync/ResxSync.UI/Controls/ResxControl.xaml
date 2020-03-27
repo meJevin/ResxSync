@@ -5,39 +5,38 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ResxSync.UI.Controls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d"
-             Background="White">
-    <materialDesign:Card>
-        <Grid>
-            <StackPanel Orientation="Vertical">
-                <!--<TextBox x:Name="ResxNameTB"  Height="50" Padding="5" MinWidth="150"
+             mc:Ignorable="d" MouseEnter="UserControl_MouseEnter" MouseLeave="UserControl_MouseLeave">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <!--<TextBox x:Name="ResxNameTB"  Height="50" Padding="5" MinWidth="150"
                      HorizontalAlignment="Center" VerticalAlignment="Top"
                      />-->
 
-                <ScrollViewer 
+            <ScrollViewer 
                            HorizontalScrollBarVisibility="Disabled"
                            VerticalScrollBarVisibility="Disabled">
-                    <StackPanel x:Name="ValuesSP">
+                <StackPanel x:Name="ValuesSP">
 
-                    </StackPanel>
-                </ScrollViewer>
-            </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </StackPanel>
 
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top">
-                <Button Margin="5" Style="{StaticResource MaterialDesignFloatingActionLightButton}"
-                        Width="26" Height="26"
-                    Click="Button_Click">
-                    <materialDesign:PackIcon Kind="Edit" Foreground="White"/>
-                </Button>
+        <StackPanel x:Name="ButtonsSP" Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="8"
+                    Visibility="Hidden">
+            <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                        Width="30" Height="30"
+                    Click="EditButton_Click">
+                <materialDesign:PackIcon Kind="Edit" Foreground="White"/>
+            </Button>
 
-                <Button Margin="5" Style="{StaticResource MaterialDesignFloatingActionLightButton}"
-                        Width="26" Height="26"
+            <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                        Width="30" Height="30"
                     Click="DeleteButton_Click">
-                    <materialDesign:PackIcon Kind="Delete" Foreground="White"/>
-                </Button>
-            </StackPanel>
-        </Grid>
-    </materialDesign:Card>
+                <materialDesign:PackIcon Kind="Delete" Foreground="White"/>
+            </Button>
+        </StackPanel>
+    </Grid>
 </UserControl>

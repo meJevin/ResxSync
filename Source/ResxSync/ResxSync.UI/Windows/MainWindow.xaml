@@ -4,12 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ResxSync.UI"
-        xmlns:controls="clr-namespace:ResxSync.UI.Controls"
+        xmlns:controls="clr-namespace:ResxSync.UI.Controls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="687" Width="1290.5"
-        FontFamily="Roboto">
+        Title="Resx Sync" Height="687" Width="1290.5"
+        TextElement.FontFamily="{DynamicResource MaterialDesignFont}"
+        Background="{DynamicResource MaterialDesignDarkBackground}"
+        TextElement.Foreground="{DynamicResource MaterialDesignDarkForeground}">
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
+        <!--<Menu Background="#CCC" DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Add">
                     <MenuItem Header="Workspace" Click="AddWorkspaceMI_Click"/>
@@ -20,7 +22,7 @@
                     <MenuItem Header="Resx" Click="AddResxMI_Click"/>
                 </MenuItem>
             </MenuItem>
-        </Menu>
+        </Menu>-->
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="350"/>
@@ -28,13 +30,20 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Grid>
-                <ListView x:Name="WorkspacesLV"
+            <GroupBox Header="Workspaces" FontSize="16">
+                <Grid>
+                    <Button Margin="5" Style="{StaticResource MaterialDesignFloatingActionLightButton}"
+                        Width="26" Height="26">
+                        <materialDesign:PackIcon Kind="Delete" Foreground="White"/>
+                    </Button>
+
+                    <ListView x:Name="WorkspacesLV"
                           ScrollViewer.CanContentScroll="False"
                           ScrollViewer.VerticalScrollBarVisibility="Visible"
                           HorizontalContentAlignment="Stretch"
                           SelectionChanged="WorkspacesLV_SelectionChanged"/>
-            </Grid>
+                </Grid>
+            </GroupBox>
 
             <Grid x:Name="CurrentWorkspaceG" Grid.Column="2">
             </Grid>
