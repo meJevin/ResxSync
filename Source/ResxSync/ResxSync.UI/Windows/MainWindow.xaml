@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ResxSync.UI"
         xmlns:controls="clr-namespace:ResxSync.UI.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="657" Width="990.5"
+        Title="MainWindow" Height="687" Width="1290.5"
         FontFamily="Roboto">
     <DockPanel>
         <Menu DockPanel.Dock="Top">

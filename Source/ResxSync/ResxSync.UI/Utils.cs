@@ -10,6 +10,8 @@ namespace ResxSync.UI
 {
     public static class Utils
     {
+        public static string DummyResxDirectory = @"..\..\..\ResxSync.Library.Tests\Dummy\";
+
         public static string SelectFile(List<string> extensions = null)
         {
             #region Get file

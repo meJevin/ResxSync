@@ -35,9 +35,33 @@ namespace ResxSync.UI
         public MainWindow()
         {
             InitializeComponent();
+
+            DummyFill();
         }
 
-        private void CreateNewWorkspace()
+        private void DummyFill()
+        {
+            var wsp1 = CreateNewWorkspace();
+
+            var wsp2 = CreateNewWorkspace();
+            wsp2.AddResx(Utils.DummyResxDirectory + "1.resx");
+
+            var wsp3 = CreateNewWorkspace();
+            wsp3.AddResx(Utils.DummyResxDirectory + "2.resx");
+            wsp3.AddResx(Utils.DummyResxDirectory + "1.resx");
+            wsp3.AddResx(Utils.DummyResxDirectory + "1.resx");
+            wsp3.AddResx(Utils.DummyResxDirectory + "1.resx");
+            wsp3.AddResx(Utils.DummyResxDirectory + "2.resx");
+
+            var wsp4 = CreateNewWorkspace();
+
+            wsp4.AddResx(Utils.DummyResxDirectory + "1.resx");
+            wsp4.AddResx(Utils.DummyResxDirectory + "2.resx");
+            wsp4.AddResx(Utils.DummyResxDirectory + "3.resx");
+            wsp4.AddResx(Utils.DummyResxDirectory + "3.resx");
+        }
+
+        private WorkspaceControl CreateNewWorkspace()
         {
             SelectableWorkspaceControl swc = new SelectableWorkspaceControl();
 
@@ -55,6 +79,8 @@ namespace ResxSync.UI
             {
                 SelectWorkspace(e.Workspace);
             };
+
+            return swc.Workspace;
         }
 
         private void SelectWorkspace(WorkspaceControl wsToSelect)
