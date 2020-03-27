@@ -59,7 +59,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Key_1" xml:space="preserve">
-    <value>Value 1</value>
+    <value>Value 1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</value>
   </data>
   <data name="Key_2" xml:space="preserve">
     <value>Value 2</value>
@@ -71,6 +71,36 @@
     <value>Value 4 AAAAAAAAAAAAAAAAAAAA</value>
   </data>
   <data name="Key_5" xml:space="preserve">
-    <value>Value 5</value>
+    <value>Value 5 AAAAAAAAAAAAAAAAAAAAAAAAAAAAA</value>
+  </data>
+  <data name="asdasddadasd" xml:space="preserve">
+    <value>Value 5 AAAAAAAAAAAAAAAAAAAAAAAAAAAAA</value>
+  </data>
+  <data name="fghhjnfghjfg" xml:space="preserve">
+    <value>Value 6</value>
+  </data>
+  <data name="hjgfhjfghjk" xml:space="preserve">
+    <value>Value 7</value>
+  </data>
+  <data name="fgdgdfgdfg" xml:space="preserve">
+    <value>Value 8</value>
+  </data>
+  <data name="fasdasdgh" xml:space="preserve">
+    <value>Value 9</value>
+  </data>
+  <data name="asfhdfhghfgkoikojfghiohjfgjiohdfgjiofghdjiofd" xml:space="preserve">
+    <value>Value 9</value>
+  </data>
+  <data name="Key_6" xml:space="preserve">
+    <value>Value 6</value>
+  </data>
+  <data name="Key_7" xml:space="preserve">
+    <value>Value 7</value>
+  </data>
+  <data name="Key_8" xml:space="preserve">
+    <value>Value 8</value>
+  </data>
+  <data name="Key_9" xml:space="preserve">
+    <value>Value 9</value>
   </data>
 </root>
