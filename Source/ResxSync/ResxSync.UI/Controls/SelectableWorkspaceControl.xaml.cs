@@ -81,6 +81,11 @@ namespace ResxSync.UI.Controls
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("You sure?", "Deleting a workspace", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                return;
+            }
+
             Delete();
         }
 
