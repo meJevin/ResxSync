@@ -23,11 +23,21 @@
                 </ScrollViewer>
             </StackPanel>
 
-            <Button Background="Transparent"
-                    HorizontalAlignment="Right" VerticalAlignment="Top"
-                    Click="DeleteButton_Click" BorderThickness="0">
-                <materialDesign:PackIcon Kind="Delete"/>
-            </Button>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top">
+                <Button Margin="5" Style="{StaticResource MaterialDesignFloatingActionLightButton}"
+                        Width="26" Height="26"
+                    Click="Button_Click">
+                    <materialDesign:PackIcon Kind="Edit" Foreground="White"/>
+                </Button>
+
+                <Button Margin="5" Style="{StaticResource MaterialDesignFloatingActionLightButton}"
+                        Width="26" Height="26"
+                    Click="DeleteButton_Click">
+                    <materialDesign:PackIcon Kind="Delete" Foreground="White"/>
+                </Button>
+            </StackPanel>
         </Grid>
     </materialDesign:Card>
 </UserControl>

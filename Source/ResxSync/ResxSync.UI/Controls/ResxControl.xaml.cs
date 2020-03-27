@@ -100,5 +100,10 @@ namespace ResxSync.UI.Controls
         {
             Deleted?.Invoke(this, e);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
