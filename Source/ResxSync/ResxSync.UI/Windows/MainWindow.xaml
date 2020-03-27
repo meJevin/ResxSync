@@ -10,9 +10,15 @@
         FontFamily="Roboto">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="Add">
-                <MenuItem Header="Workspace" Click="AddWorkspaceMI_Click"/>
-                <MenuItem Header="Resx" Click="AddResxMI_Click"/>
+            <MenuItem Header="File">
+                <MenuItem Header="Add">
+                    <MenuItem Header="Workspace" Click="AddWorkspaceMI_Click"/>
+                    <MenuItem Header="Resx" Click="AddResxMI_Click"/>
+                </MenuItem>
+                <MenuItem Header="Save">
+                    <MenuItem Header="Workspace" Click="AddWorkspaceMI_Click"/>
+                    <MenuItem Header="Resx" Click="AddResxMI_Click"/>
+                </MenuItem>
             </MenuItem>
         </Menu>
         <Grid DockPanel.Dock="Top">
