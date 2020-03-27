@@ -54,6 +54,8 @@ namespace ResxSync.UI.Controls
             InitializeComponent();
 
             _workspace = new WorkspaceControl();
+
+            ButtonsSP.Visibility = Visibility.Hidden;
         }
 
         public void Select()
@@ -75,9 +77,24 @@ namespace ResxSync.UI.Controls
             Deselected?.Invoke(this, new SelectableWorkspaceControlEventArgs() { Control = this, Workspace = _workspace });
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             Delete();
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ButtonsSP.Visibility = Visibility.Visible;
+        }
+
+        private void UserControl_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ButtonsSP.Visibility = Visibility.Hidden;
         }
     }
 }

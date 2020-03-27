@@ -41,7 +41,8 @@
                           ScrollViewer.CanContentScroll="False"
                           ScrollViewer.VerticalScrollBarVisibility="Visible"
                           HorizontalContentAlignment="Stretch"
-                          SelectionChanged="WorkspacesLV_SelectionChanged"/>
+                          SelectionChanged="WorkspacesLV_SelectionChanged"
+                          Style="{StaticResource MaterialDesignListView}"/>
                 </Grid>
             </GroupBox>
 

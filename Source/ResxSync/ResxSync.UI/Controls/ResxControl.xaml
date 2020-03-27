@@ -25,17 +25,17 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Margin="8"
-                    Visibility="Hidden">
-            <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                    Visibility="Visible">
+            <Button Style="{StaticResource MaterialDesignIconButton}"
                         Width="30" Height="30"
                     Click="EditButton_Click">
-                <materialDesign:PackIcon Kind="Edit" Foreground="White"/>
+                <materialDesign:PackIcon Kind="Edit" Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
             </Button>
 
-            <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+            <Button Style="{StaticResource MaterialDesignIconButton}"
                         Width="30" Height="30"
                     Click="DeleteButton_Click">
-                <materialDesign:PackIcon Kind="Delete" Foreground="White"/>
+                <materialDesign:PackIcon Kind="Delete" Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
             </Button>
         </StackPanel>
     </Grid>

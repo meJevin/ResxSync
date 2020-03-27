@@ -5,11 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ResxSync.UI.Controls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d"
-             Background="AliceBlue" BorderBrush="Black" Height="192.5" Width="271.5">
-    <materialDesign:Card>
+             mc:Ignorable="d" Height="192.5" Width="271.5" 
+             MouseEnter="UserControl_MouseEnter" MouseLeave="UserControl_MouseLeave">
+    <materialDesign:Card Padding="10">
         <Grid>
-            <Button Background="Transparent" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click" Content="{materialDesign:PackIcon Kind=Delete}"/>
+            <StackPanel>
+                <TextBox materialDesign:HintAssist.Hint="Workspace Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <Label Style="{StaticResource MaterialDesignLabel}" Content="Keys"/>
+            </StackPanel>
+            
+            <StackPanel x:Name="ButtonsSP" Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Visibility="Visible">
+                <Button Style="{StaticResource MaterialDesignIconButton}"
+                        Width="30" Height="30"
+                    Click="DeleteButton_Click">
+                    <materialDesign:PackIcon Kind="Delete" Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
+                </Button>
+            </StackPanel>
         </Grid>
     </materialDesign:Card>
 </UserControl>

@@ -28,6 +28,8 @@ namespace ResxSync.UI.Controls
         public ResxControl()
         {
             InitializeComponent();
+
+            ButtonsSP.Visibility = Visibility.Hidden;
         }
 
         public void Init(Resx resx, ResxSyncer syncer)
