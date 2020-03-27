@@ -64,13 +64,14 @@ namespace ResxSync.UI
         private WorkspaceControl CreateNewWorkspace()
         {
             SelectableWorkspaceControl swc = new SelectableWorkspaceControl();
+            swc.Margin = new Thickness(0, 10, 0, 10);
 
-            WorkspacesLV.Items.Add(swc);
+            WorkspacesSP.Children.Add(swc);
 
             swc.Deleted += (object sender, SelectableWorkspaceControlEventArgs e) =>
             {
                 // Remove from ListView
-                WorkspacesLV.Items.Remove(e.Control);
+                WorkspacesSP.Children.Remove(e.Control);
 
                 DeleteWorkspace(e.Workspace);
             };
@@ -78,6 +79,16 @@ namespace ResxSync.UI
             swc.Selected += (object sender, SelectableWorkspaceControlEventArgs e) =>
             {
                 SelectWorkspace(e.Workspace);
+            };
+
+            swc.MouseDoubleClick += (object sender, MouseButtonEventArgs e) =>
+            {
+                foreach (SelectableWorkspaceControl ws in WorkspacesSP.Children)
+                {
+                    ws.Deselect();
+                }
+
+                swc.Select();
             };
 
             return swc.Workspace;
@@ -98,23 +109,6 @@ namespace ResxSync.UI
                 CurrentWorkspaceG.Children.Clear();
                 _currentWorkspace = null;
             }
-        }
-
-        private void WorkspacesLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (WorkspacesLV.SelectedItem == null)
-            {
-                return;
-            }
-
-            var wsSelected = WorkspacesLV.SelectedItem as SelectableWorkspaceControl;
-
-            foreach (SelectableWorkspaceControl ws in WorkspacesLV.Items)
-            {
-                ws.Deselect();
-            }
-
-            wsSelected.Select();
         }
 
         private void AddWorkspaceMI_Click(object sender, RoutedEventArgs e)

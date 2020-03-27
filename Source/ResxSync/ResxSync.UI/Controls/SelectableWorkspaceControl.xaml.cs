@@ -61,6 +61,7 @@ namespace ResxSync.UI.Controls
         public void Select()
         {
             _isSelected = true;
+            SWCBorder.Background = new SolidColorBrush(Color.FromArgb(30, 255, 255, 255));
 
             Selected?.Invoke(this, new SelectableWorkspaceControlEventArgs() { Control = this, Workspace = _workspace });
         }
@@ -73,6 +74,7 @@ namespace ResxSync.UI.Controls
         public void Deselect()
         {
             _isSelected = false;
+            SWCBorder.Background = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
 
             Deselected?.Invoke(this, new SelectableWorkspaceControlEventArgs() { Control = this, Workspace = _workspace });
         }

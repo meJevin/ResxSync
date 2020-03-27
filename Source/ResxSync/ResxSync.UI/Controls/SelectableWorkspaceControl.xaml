@@ -7,23 +7,25 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" Height="192.5" Width="271.5" 
              MouseEnter="UserControl_MouseEnter" MouseLeave="UserControl_MouseLeave">
-    <materialDesign:Card Padding="10">
-        <Grid>
-            <StackPanel>
-                <TextBox materialDesign:HintAssist.Hint="Workspace Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <Label Style="{StaticResource MaterialDesignLabel}" Content="Keys"/>
-            </StackPanel>
-            
-            <StackPanel x:Name="ButtonsSP" Orientation="Horizontal"
+    <materialDesign:Card>
+        <Border x:Name="SWCBorder" Background="#00000000">
+            <Grid Margin="20 10">
+                <StackPanel>
+                    <TextBox materialDesign:HintAssist.Hint="Workspace Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Label Style="{StaticResource MaterialDesignLabel}" Content="Keys"/>
+                </StackPanel>
+
+                <StackPanel x:Name="ButtonsSP" Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Visibility="Visible">
-                <Button Style="{StaticResource MaterialDesignIconButton}"
+                    <Button Style="{StaticResource MaterialDesignIconButton}"
                         Width="30" Height="30"
                     Click="DeleteButton_Click">
-                    <materialDesign:PackIcon Kind="Delete" Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
-                </Button>
-            </StackPanel>
-        </Grid>
+                        <materialDesign:PackIcon Kind="Delete" Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
     </materialDesign:Card>
 </UserControl>

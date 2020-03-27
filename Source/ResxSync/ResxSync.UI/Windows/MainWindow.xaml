@@ -37,12 +37,9 @@
                         <materialDesign:PackIcon Kind="Delete" Foreground="White"/>
                     </Button>
 
-                    <ListView x:Name="WorkspacesLV"
-                          ScrollViewer.CanContentScroll="False"
-                          ScrollViewer.VerticalScrollBarVisibility="Visible"
-                          HorizontalContentAlignment="Stretch"
-                          SelectionChanged="WorkspacesLV_SelectionChanged"
-                          Style="{StaticResource MaterialDesignListView}"/>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel x:Name="WorkspacesSP"/>
+                    </ScrollViewer>
                 </Grid>
             </GroupBox>
 
