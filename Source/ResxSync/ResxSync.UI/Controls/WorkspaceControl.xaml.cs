@@ -1,4 +1,5 @@
-﻿using ResxSync.Library.Core;
+﻿using Microsoft.Win32;
+using ResxSync.Library.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -136,6 +137,22 @@ namespace ResxSync.UI.Controls
 
             // Last phantom item so that we can resize the last item in grid via gridsplitter
             ResxControlsG.ColumnDefinitions.Add(new ColumnDefinition());
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Filter = "Resx files | *.resx",
+                RestoreDirectory = true,
+            };
+
+            var res = ofd.ShowDialog();
+
+            if (res.HasValue && res.Value)
+            {
+                AddResx(ofd.FileName);
+            }
         }
     }
 }

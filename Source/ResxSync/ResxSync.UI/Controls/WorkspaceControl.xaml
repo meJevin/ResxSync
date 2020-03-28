@@ -28,6 +28,13 @@
                             HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Grid>
         </ScrollViewer>
+        
         <other:BindableScrollBar Style="{StaticResource MaterialDesignScrollBar}" BoundScrollViewer="{Binding ElementName=Test}" Orientation="Horizontal" VerticalAlignment="Bottom"/>
+        
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="AddResx" Click="MenuItem_Click"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
     </Grid>
 </UserControl>
