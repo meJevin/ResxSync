@@ -30,18 +30,24 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <GroupBox Header="Workspaces" FontSize="16">
-                <Grid>
-                    <Button Margin="5" Style="{StaticResource MaterialDesignFloatingActionLightButton}"
-                        Width="26" Height="26">
-                        <materialDesign:PackIcon Kind="Delete" Foreground="White"/>
-                    </Button>
+            <DockPanel>
+                <Grid DockPanel.Dock="Top" Height="65" Margin="10 5">
+                    <Label FontSize="16" VerticalAlignment="Center">
+                        Workspaces
+                    </Label>
 
+                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                            HorizontalAlignment="Right" VerticalAlignment="Center"
+                            Click="AddWorkspaceMI_Click" Width="30" Height="30">
+                        <materialDesign:PackIcon Kind="Add"/>
+                    </Button>
+                </Grid>
+                <Grid>
                     <ScrollViewer HorizontalScrollBarVisibility="Disabled">
                         <StackPanel x:Name="WorkspacesSP"/>
                     </ScrollViewer>
                 </Grid>
-            </GroupBox>
+            </DockPanel>
 
             <Grid x:Name="CurrentWorkspaceG" Grid.Column="2">
             </Grid>

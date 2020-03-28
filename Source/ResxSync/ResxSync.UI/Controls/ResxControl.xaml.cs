@@ -54,6 +54,7 @@ namespace ResxSync.UI.Controls
                 Text = _resx.KVPs.ContainsKey(syncKey.Key) ? _resx.KVPs[syncKey.Key] : "",
                 Padding = new Thickness(5),
                 TextWrapping = TextWrapping.NoWrap,
+                TextAlignment = TextAlignment.Center,
                 Height = 50,
             };
 
