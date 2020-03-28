@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Resx.cs" />
+    <Compile Include="Core\ResxSyncer.cs" />
+    <Compile Include="Core\SyncKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
