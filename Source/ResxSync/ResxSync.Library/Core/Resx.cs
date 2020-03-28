@@ -11,12 +11,6 @@ namespace ResxSync.Library.Core
 {
     public class Resx
     {
-        public string Name
-        {
-            get;
-            set;
-        }
-
         public Resx()
         {
             KVPs = new Dictionary<string, string>();
@@ -24,8 +18,6 @@ namespace ResxSync.Library.Core
 
         public Resx(string resxFilePath)
         {
-            Name = new FileInfo(resxFilePath).Name;
-
             KVPs = new Dictionary<string, string>();
 
             using (ResXResourceReader resx = new ResXResourceReader(resxFilePath))
