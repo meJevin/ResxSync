@@ -33,6 +33,22 @@ namespace ResxSync.UI.Controls
             InitializeComponent();
         }
 
+        public void AddResx()
+        {
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Filter = "Resx files | *.resx",
+                RestoreDirectory = true,
+            };
+
+            var res = ofd.ShowDialog();
+
+            if (res.HasValue && res.Value)
+            {
+                AddResx(ofd.FileName);
+            }
+        }
+
         public void AddResx(string path)
         {
             // Load resx and add it to syncer
@@ -141,18 +157,7 @@ namespace ResxSync.UI.Controls
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog()
-            {
-                Filter = "Resx files | *.resx",
-                RestoreDirectory = true,
-            };
-
-            var res = ofd.ShowDialog();
-
-            if (res.HasValue && res.Value)
-            {
-                AddResx(ofd.FileName);
-            }
+            AddResx();
         }
     }
 }

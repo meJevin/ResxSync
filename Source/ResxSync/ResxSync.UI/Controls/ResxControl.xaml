@@ -24,7 +24,6 @@
         <StackPanel x:Name="ButtonsSP" Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
-                    Margin="8"
                     Visibility="Visible">
             <Button Style="{StaticResource MaterialDesignIconButton}"
                         Width="30" Height="30"

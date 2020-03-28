@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ResxSync.UI.Controls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" Height="192.5" Width="271.5" 
-             MouseEnter="UserControl_MouseEnter" MouseLeave="UserControl_MouseLeave">
+             mc:Ignorable="d" Height="192.5" Width="271.5" >
     <materialDesign:Card>
         <Border x:Name="SWCBorder" Background="#00000000">
             <Grid Margin="20 10">
@@ -18,16 +17,27 @@
                     <Label Style="{StaticResource MaterialDesignLabel}" Content="Keys"/>
                 </StackPanel>
 
-                <StackPanel x:Name="ButtonsSP" Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
+                <Grid
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Bottom"
                     Visibility="Visible">
-                    <Button Style="{StaticResource MaterialDesignIconButton}"
-                        Width="30" Height="30"
-                    Click="DeleteButton_Click">
-                        <materialDesign:PackIcon Kind="Delete" Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" 
+                    Click="AddResxFileButton_Click" Foreground="{DynamicResource MaterialDesignDarkForeground}">
+                        Add Resx
                     </Button>
-                </StackPanel>
+
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="1"
+                    Click="DeleteButton_Click" Foreground="{DynamicResource MaterialDesignDarkForeground}">
+                        Delete
+                    </Button>
+
+                </Grid>
             </Grid>
         </Border>
     </materialDesign:Card>

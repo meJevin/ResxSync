@@ -52,9 +52,8 @@ namespace ResxSync.UI.Controls
                 HorizontalContentAlignment = HorizontalAlignment.Center,
                 VerticalContentAlignment = VerticalAlignment.Center,
                 Text = _resx.KVPs.ContainsKey(syncKey.Key) ? _resx.KVPs[syncKey.Key] : "",
-                Padding = new Thickness(5),
-                TextWrapping = TextWrapping.NoWrap,
                 TextAlignment = TextAlignment.Center,
+                AcceptsReturn = true,
                 Height = 50,
             };
 

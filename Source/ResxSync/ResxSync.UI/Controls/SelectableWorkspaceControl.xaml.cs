@@ -54,8 +54,6 @@ namespace ResxSync.UI.Controls
             InitializeComponent();
 
             _workspace = new WorkspaceControl();
-
-            ButtonsSP.Visibility = Visibility.Hidden;
         }
 
         public void Select()
@@ -89,19 +87,9 @@ namespace ResxSync.UI.Controls
             Delete();
         }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
+        private void AddResxFileButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
-        {
-            ButtonsSP.Visibility = Visibility.Visible;
-        }
-
-        private void UserControl_MouseLeave(object sender, MouseEventArgs e)
-        {
-            ButtonsSP.Visibility = Visibility.Hidden;
+            _workspace.AddResx();
         }
     }
 }

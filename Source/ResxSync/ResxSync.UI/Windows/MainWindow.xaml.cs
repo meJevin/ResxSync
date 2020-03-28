@@ -36,7 +36,7 @@ namespace ResxSync.UI
         {
             InitializeComponent();
 
-            DummyFill();
+            //DummyFill();
         }
 
         private void DummyFill()
@@ -124,18 +124,7 @@ namespace ResxSync.UI
                 return;
             }
 
-            OpenFileDialog ofd = new OpenFileDialog()
-            {
-                Filter = "Resx files | *.resx",
-                RestoreDirectory = true,
-            };
-
-            var res = ofd.ShowDialog();
-
-            if (res.HasValue && res.Value)
-            {
-                _currentWorkspace.AddResx(ofd.FileName);
-            }
+            _currentWorkspace.AddResx();
         }
     }
 }
