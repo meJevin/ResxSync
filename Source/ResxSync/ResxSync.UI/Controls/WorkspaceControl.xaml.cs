@@ -97,6 +97,10 @@ namespace ResxSync.UI.Controls
 
             ResxControlsG.ColumnDefinitions.RemoveRange(resxControlColumnIndex, 2);
             ResxControlsG.Children.RemoveRange(resxControlChildIndex, 2);
+
+            ResxAndSplitters.Remove(resxControl);
+
+            GC.Collect();
         }
 
         private void AddResxControl(Resx loadedResx)

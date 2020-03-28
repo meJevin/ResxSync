@@ -108,6 +108,8 @@ namespace ResxSync.UI
             {
                 CurrentWorkspaceG.Children.Clear();
                 _currentWorkspace = null;
+
+                GC.Collect();
             }
         }
 
