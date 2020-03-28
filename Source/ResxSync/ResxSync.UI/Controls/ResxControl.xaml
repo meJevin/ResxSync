@@ -5,37 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ResxSync.UI.Controls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" MouseEnter="UserControl_MouseEnter" MouseLeave="UserControl_MouseLeave">
+             mc:Ignorable="d">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <!--<TextBox x:Name="ResxNameTB"  Height="50" Padding="5" MinWidth="150"
-                     HorizontalAlignment="Center" VerticalAlignment="Top"
-                     />-->
+
+            <Grid Height="50">
+                <TextBox x:Name="ResxNameTB"
+                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                         materialDesign:HintAssist.Hint="Enter Resx name"
+                         Margin="20 0"
+                     />
+                <Button Style="{StaticResource MaterialDesignIconButton}"
+                        Width="30" Height="30"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                    Click="DeleteButton_Click" Margin="5 0">
+                    <materialDesign:PackIcon Kind="Close" Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
+                </Button>
+            </Grid>
 
             <ScrollViewer 
                            HorizontalScrollBarVisibility="Disabled"
                            VerticalScrollBarVisibility="Disabled">
                 <StackPanel x:Name="ValuesSP">
-
                 </StackPanel>
             </ScrollViewer>
-        </StackPanel>
-
-        <StackPanel x:Name="ButtonsSP" Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Visibility="Visible">
-            <Button Style="{StaticResource MaterialDesignIconButton}"
-                        Width="30" Height="30"
-                    Click="EditButton_Click">
-                <materialDesign:PackIcon Kind="Edit" Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
-            </Button>
-
-            <Button Style="{StaticResource MaterialDesignIconButton}"
-                        Width="30" Height="30"
-                    Click="DeleteButton_Click">
-                <materialDesign:PackIcon Kind="Delete" Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
-            </Button>
         </StackPanel>
     </Grid>
 </UserControl>

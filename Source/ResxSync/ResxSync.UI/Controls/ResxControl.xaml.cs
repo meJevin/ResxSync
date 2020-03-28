@@ -28,8 +28,6 @@ namespace ResxSync.UI.Controls
         public ResxControl()
         {
             InitializeComponent();
-
-            ButtonsSP.Visibility = Visibility.Hidden;
         }
 
         public void Init(Resx resx, ResxSyncer syncer)
@@ -106,21 +104,6 @@ namespace ResxSync.UI.Controls
             }
 
             Deleted?.Invoke(this, e);
-        }
-
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
-        {
-            ButtonsSP.Visibility = Visibility.Visible;
-        }
-
-        private void UserControl_MouseLeave(object sender, MouseEventArgs e)
-        {
-            ButtonsSP.Visibility = Visibility.Hidden;
         }
     }
 }

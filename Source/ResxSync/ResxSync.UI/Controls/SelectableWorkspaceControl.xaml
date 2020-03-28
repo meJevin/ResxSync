@@ -17,27 +17,27 @@
                     <Label Style="{StaticResource MaterialDesignLabel}" Content="Keys"/>
                 </StackPanel>
 
-                <Grid
-                    HorizontalAlignment="Stretch"
+                <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Visibility="Visible">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" 
-                    Click="AddResxFileButton_Click" Foreground="{DynamicResource MaterialDesignDarkForeground}">
-                        Add Resx
+                    
+                    <Button Style="{StaticResource MaterialDesignIconButton}" ToolTip="Save to disk"
+                    Click="SaveWorkspaceToDiskButton_Click" Foreground="{DynamicResource MaterialDesignDarkForeground}" Width="30" Height="30">
+                        <materialDesign:PackIcon Kind="ContentSave"/>
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="1"
-                    Click="DeleteButton_Click" Foreground="{DynamicResource MaterialDesignDarkForeground}">
-                        Delete
+                    <Button Style="{StaticResource MaterialDesignIconButton}" ToolTip="Add Resx file"
+                    Click="AddResxFileButton_Click" Foreground="{DynamicResource MaterialDesignDarkForeground}" Width="30" Height="30">
+                        <materialDesign:PackIcon Kind="Add"/>
                     </Button>
 
-                </Grid>
+                    <Button Style="{StaticResource MaterialDesignIconButton}" ToolTip="Delete workspace"
+                    Click="DeleteButton_Click" Foreground="{DynamicResource MaterialDesignDarkForeground}" Width="30" Height="30">
+                        <materialDesign:PackIcon Kind="Delete"/>
+                    </Button>
+
+                </StackPanel>
             </Grid>
         </Border>
     </materialDesign:Card>

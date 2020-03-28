@@ -91,5 +91,10 @@ namespace ResxSync.UI.Controls
         {
             _workspace.AddResx();
         }
+
+        private void SaveWorkspaceToDiskButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
